@@ -3,350 +3,249 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>COCO GO • Fundamentos | Venta Directa</title>
-  <meta name="description" content="Fundamentos reales de trading y emprendimiento con IA. Guía práctica + herramientas que usan traders y emprendedores para operar con claridad. Acceso inmediato por email post-pago.">
+  <title>COCO GO | Guía ChatGPT para Emprendedores</title>
+  <meta name="description" content="La guía práctica de ChatGPT que usan emprendedores para ahorrar horas, crear sistemas y tomar mejores decisiones. Acceso inmediato por email después de la compra.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
-    :root { --primary: #0f766e; }
     body { font-family: 'Inter', system_ui, sans-serif; }
     .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; letter-spacing: -.02em; }
-    .hero-gradient { background: linear-gradient(135deg, #0f172a 0%, #134e4b 100%); }
-    .section-header { font-size: 2.25rem; line-height: 2.5rem; font-weight: 700; letter-spacing: -.04em; }
-    .card { transition: transform .2s cubic-bezier(0.4,0,0.2,1), box-shadow .2s; }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
-    .nav-scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); }
-    .metric { font-variant-numeric: tabular-nums; }
-    .benefit-check { color: #14b8a6; }
-    .price { font-size: 3.5rem; line-height: 1; font-weight: 700; }
+    .hero-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%); }
+    .section-header { font-size: 2.1rem; line-height: 2.4rem; font-weight: 700; letter-spacing: -.03em; }
+    .product-card { transition: transform .2s cubic-bezier(0.4,0,0.2,1), box-shadow .2s; }
+    .product-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+    .nav { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); }
     .cta-btn { transition: all .2s cubic-bezier(0.4,0.0,0.2,1); }
-    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgb(15 118 110 / 0.3), 0 4px 6px -4px rgb(15 118 110 / 0.3); }
-    .stat-number { font-weight: 700; font-size: 2.25rem; line-height: 2.5rem; }
+    .cta-btn:hover { transform: translateY(-2px); }
+    .series-card { border: 1px solid #334155; }
+    .pilot-badge { background: #14b8a6; color: #0f172a; font-size: 0.75rem; padding: 2px 10px; border-radius: 9999px; font-weight: 600; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-200">
   <!-- NAV -->
-  <nav class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-lg">
+  <nav class="nav sticky top-0 z-50 border-b border-white/10">
     <div class="max-w-screen-xl mx-auto px-6">
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center gap-x-3">
-          <div class="flex h-9 w-9 items-center justify-center rounded-2xl bg-teal-600">
+          <div class="flex h-9 w-9 items-center justify-center rounded-2xl bg-emerald-600">
             <span class="font-display text-2xl font-semibold tracking-tighter text-white">CG</span>
           </div>
-          <div>
-            <span class="font-display text-2xl font-semibold tracking-tighter">COCO GO</span>
-          </div>
+          <div class="font-display text-2xl font-semibold tracking-tighter">COCO GO</div>
         </div>
 
         <div class="hidden md:flex items-center gap-x-8 text-sm">
-          <a href="#fundamentos" class="hover:text-teal-400 transition-colors">Fundamentos</a>
-          <a href="#que-incluye" class="hover:text-teal-400 transition-colors">Qué incluye</a>
-          <a href="#precio" class="hover:text-teal-400 transition-colors">Precio</a>
+          <a href="#piloto" class="hover:text-emerald-400 transition-colors">La guía</a>
+          <a href="#serie" class="hover:text-emerald-400 transition-colors">La serie</a>
+          <a href="#como-funciona" class="hover:text-emerald-400 transition-colors">Cómo funciona</a>
         </div>
 
-        <div class="flex items-center gap-x-3">
-          <a href="#precio" 
-             class="hidden sm:inline-flex items-center justify-center rounded-2xl border border-white/20 px-5 py-2 text-sm font-medium hover:bg-white/5 transition-colors">
-            Ver detalles
-          </a>
-          <a href="#precio"
-             class="inline-flex items-center justify-center rounded-2xl bg-teal-600 hover:bg-teal-500 px-5 py-2 text-sm font-semibold transition-colors cta-btn">
-            Comprar ahora
-          </a>
-        </div>
+        <a href="#piloto" 
+           class="inline-flex items-center justify-center rounded-2xl bg-emerald-600 hover:bg-emerald-500 px-5 py-2 text-sm font-semibold transition-colors cta-btn">
+          Comprar ahora
+        </a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO / BRAND -->
   <header class="hero-gradient">
-    <div class="max-w-screen-xl mx-auto px-6 pt-16 pb-20 md:pt-20 md:pb-24">
-      <div class="grid md:grid-cols-12 gap-10 items-center">
-        <div class="md:col-span-7">
-          <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1 text-xs font-medium tracking-[0.5px] mb-6">
-            <i class="fa-solid fa-check-double text-teal-400"></i>
-            <span>EDICIÓN 2026 • ACTUALIZACIONES INCLUIDAS</span>
-          </div>
+    <div class="max-w-screen-xl mx-auto px-6 pt-16 pb-14 md:pt-20 md:pb-16 text-center">
+      <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1 text-xs font-medium tracking-[0.5px] mb-6">
+        <span>PILOTO • GUÍAS Y CURSOS COCO GO</span>
+      </div>
 
-          <h1 class="font-display text-6xl md:text-7xl leading-[1.05] tracking-tighter font-semibold mb-6">
-            Fundamentos que<br>separan a los que<br>consiguen resultados.
-          </h1>
-          
-          <p class="max-w-lg text-xl text-slate-300 mb-8">
-            La guía práctica de trading y emprendimiento con IA que usan quienes ya operan con claridad. 
-            Sin hype. Sin atajos vacíos. Solo lo que funciona.
-          </p>
+      <h1 class="font-display text-6xl md:text-7xl leading-[1.05] tracking-tighter font-semibold mb-5">
+        Guía ChatGPT para<br>Emprendedores
+      </h1>
+      
+      <p class="max-w-xl mx-auto text-xl text-slate-300 mb-8">
+        La guía práctica que usan emprendedores hispanohablantes para ahorrar horas, crear sistemas reales y tomar mejores decisiones con IA.
+      </p>
 
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#precio" 
-               class="cta-btn inline-flex h-14 items-center justify-center gap-3 rounded-3xl bg-white text-slate-950 px-9 text-lg font-semibold shadow-xl shadow-black/40 active:scale-[0.985]">
-              <span>Acceder ahora • $37 USD</span>
-            </a>
-            <a href="#que-incluye" 
-               class="inline-flex h-14 items-center justify-center gap-3 rounded-3xl border border-white/30 px-8 text-lg font-medium hover:bg-white/5">
-              Ver qué recibes
-            </a>
-          </div>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#piloto" 
+           class="cta-btn inline-flex h-14 items-center justify-center gap-3 rounded-3xl bg-white text-slate-950 px-9 text-lg font-semibold shadow-xl shadow-black/40">
+          <span>Comprar la guía ahora</span>
+        </a>
+        <a href="#serie" 
+           class="inline-flex h-14 items-center justify-center gap-3 rounded-3xl border border-white/30 px-8 text-lg font-medium hover:bg-white/5">
+          Ver toda la serie COCO GO
+        </a>
+      </div>
 
-          <div class="mt-8 flex items-center gap-6 text-sm text-slate-400">
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-shield-halved text-teal-400"></i>
-              <span>1 pago único • Acceso de por vida</span>
-            </div>
-            <div class="hidden sm:block w-px h-3.5 bg-white/20"></div>
-            <div>Entrega inmediata por email</div>
-          </div>
-        </div>
-
-        <div class="md:col-span-5">
-          <div class="relative rounded-3xl bg-slate-900/70 border border-white/10 p-2 shadow-2xl">
-            <div class="rounded-[20px] bg-slate-950 p-6">
-              <div class="flex items-center justify-between mb-4">
-                <div class="text-xs uppercase tracking-widest text-teal-400 font-medium">Incluye ahora</div>
-                <div class="text-[10px] px-3 py-1 rounded-full bg-teal-500/10 text-teal-400">NUEVO 2026</div>
-              </div>
-              <div class="space-y-3 text-sm">
-                <div class="flex items-center gap-3"><i class="fa-solid fa-file-pdf w-4 text-teal-400"></i> <span>Guía ChatGPT para Emprendedores (actualizada)</span></div>
-                <div class="flex items-center gap-3"><i class="fa-solid fa-table w-4 text-teal-400"></i> <span>Comparador Prop Firms + spreadsheets</span></div>
-                <div class="flex items-center gap-3"><i class="fa-solid fa-chart-line w-4 text-teal-400"></i> <span>Estrategias de trading esenciales (VCP + más)</span></div>
-                <div class="flex items-center gap-3"><i class="fa-solid fa-robot w-4 text-teal-400"></i> <span>Plantillas de prompts + flujos IA listos</span></div>
-              </div>
-              <div class="mt-6 pt-6 border-t border-white/10 text-xs text-slate-500">
-                + flujo automatizado de entrega post-pago (Make/Zap) • actualizaciones futuras sin costo adicional
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="mt-8 text-sm text-slate-400">
+        Acceso inmediato por email • 1 pago único • Actualizaciones incluidas
       </div>
     </div>
   </header>
 
-  <!-- TRUST / SOCIAL PROOF -->
-  <div class="border-b border-white/10 bg-slate-900/50">
-    <div class="max-w-screen-xl mx-auto px-6 py-5">
-      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-sm text-slate-400">
-        <div class="flex items-center gap-2"><i class="fa-solid fa-users"></i> <span>Emprendedores y traders en 4 países</span></div>
-        <div class="flex items-center gap-2"><i class="fa-solid fa-sync"></i> <span>Actualizaciones cada trimestre</span></div>
-        <div class="flex items-center gap-2"><i class="fa-solid fa-headset"></i> <span>Soporte directo por email</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FUNDAMENTOS -->
-  <section id="fundamentos" class="max-w-screen-xl mx-auto px-6 pt-16 pb-12">
-    <div class="max-w-2xl">
-      <div class="uppercase tracking-[2px] text-teal-400 text-xs font-semibold mb-3">EL PROBLEMA QUE RESOLVEMOS</div>
-      <h2 class="section-header text-white">La mayoría falla por falta de base, no por falta de ganas.</h2>
-      <p class="mt-4 text-lg text-slate-300">Cursos de $500 que prometen atajos. Señales de Telegram. Ruido constante en X y YouTube. Al final terminas con más confusión que capital.</p>
+  <!-- EL PILOTO ACTUAL -->
+  <section id="piloto" class="max-w-screen-xl mx-auto px-6 pt-14 pb-12">
+    <div class="max-w-2xl mx-auto text-center mb-10">
+      <div class="pilot-badge mb-4 inline-block">PILOTO ACTUAL — DISPONIBLE</div>
+      <h2 class="section-header">Guía ChatGPT para Emprendedores</h2>
+      <p class="mt-3 text-xl text-slate-300">Conceptos claros + prompts que funcionan + flujos listos para usar en tu negocio real.</p>
     </div>
 
-    <div class="mt-10 grid md:grid-cols-3 gap-5">
-      <div class="card rounded-3xl border border-white/10 bg-slate-900 p-7">
-        <div class="text-red-400 mb-4"><i class="fa-solid fa-ban text-2xl"></i></div>
-        <div class="font-semibold mb-2">Sin fundamentos = decisiones emocionales</div>
-        <div class="text-sm text-slate-400">Operas por FOMO, cierras por miedo, y repites el mismo ciclo.</div>
+    <div class="max-w-4xl mx-auto grid md:grid-cols-5 gap-6">
+      <!-- Main offer card -->
+      <div class="md:col-span-3 rounded-3xl border border-white/10 bg-slate-900 p-8">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <div class="text-emerald-400 text-sm font-semibold tracking-wider">GUÍA PRÁCTICA</div>
+            <div class="text-3xl font-semibold tracking-tight">Guía ChatGPT para Emprendedores</div>
+          </div>
+          <div class="text-right">
+            <div class="text-4xl font-bold">$37</div>
+            <div class="text-xs text-slate-400">USD • pago único</div>
+          </div>
+        </div>
+
+        <div class="space-y-4 text-sm">
+          <div class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Guía completa en PDF con explicación paso a paso</span></div>
+          <div class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Más de 50 prompts probados listos para copiar</span></div>
+          <div class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Flujos prácticos para investigación, ventas, contenido y operaciones</span></div>
+          <div class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Ejemplos reales aplicados a emprendimiento y trading</span></div>
+          <div class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Acceso a actualizaciones futuras sin costo adicional</span></div>
+          <div class="flex gap-3"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span>Entrega automática por email al instante</span></div>
+        </div>
+
+        <a href="#" 
+           class="mt-8 block text-center cta-btn rounded-3xl bg-emerald-600 hover:bg-emerald-500 py-4 text-lg font-semibold">
+          Comprar Guía ChatGPT para Emprendedores ahora
+        </a>
+
+        <div class="mt-3 text-center text-xs text-slate-400">14 días de garantía • Factura disponible • Acceso de por vida</div>
       </div>
-      <div class="card rounded-3xl border border-white/10 bg-slate-900 p-7">
-        <div class="text-amber-400 mb-4"><i class="fa-solid fa-magnifying-glass text-2xl"></i></div>
-        <div class="font-semibold mb-2">IA mal usada = más ruido</div>
-        <div class="text-sm text-slate-400">Prompts genéricos que cualquiera puede copiar. Sin sistema propio.</div>
-      </div>
-      <div class="card rounded-3xl border border-white/10 bg-slate-900 p-7">
-        <div class="text-teal-400 mb-4"><i class="fa-solid fa-check-double text-2xl"></i></div>
-        <div class="font-semibold mb-2">COCO GO = sistema repetible</div>
-        <div class="text-sm text-slate-400">Fundamentos + aplicación práctica de IA + herramientas que puedes usar hoy mismo.</div>
+
+      <!-- Side info -->
+      <div class="md:col-span-2 space-y-4">
+        <div class="rounded-3xl border border-white/10 bg-slate-900 p-6 text-sm">
+          <div class="font-semibold mb-2">¿Para quién es esta guía?</div>
+          <div class="text-slate-300">Emprendedores y traders hispanohablantes que quieren usar ChatGPT e IA de forma práctica y concreta, sin perderse en tecnicismos ni promesas vacías.</div>
+        </div>
+        <div class="rounded-3xl border border-white/10 bg-slate-900 p-6 text-sm">
+          <div class="font-semibold mb-2">Qué vas a poder hacer después</div>
+          <ul class="text-slate-300 space-y-1.5">
+            <li>• Crear prompts que realmente funcionan</li>
+            <li>• Ahorrar horas en investigación y tareas repetitivas</li>
+            <li>• Generar contenido, ideas y sistemas más rápido</li>
+            <li>• Tomar mejores decisiones con ayuda estructurada de IA</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- QUÉ INCLUYE -->
-  <section id="que-incluye" class="bg-slate-900 border-y border-white/10">
-    <div class="max-w-screen-xl mx-auto px-6 py-16">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
-        <div>
-          <div class="text-teal-400 text-xs tracking-[1.5px] font-semibold">TODO LO QUE RECIBES</div>
-          <h3 class="section-header text-white mt-2">Una sola compra.<br>Valor de por vida.</h3>
-        </div>
-        <div class="text-sm text-slate-400 max-w-xs">Todo en un solo lugar. Actualizaciones incluidas. Sin suscripciones ocultas.</div>
+  <!-- LA SERIE / ÓRBITA COCO GO -->
+  <section id="serie" class="bg-slate-900 border-y border-white/10 py-12">
+    <div class="max-w-screen-xl mx-auto px-6">
+      <div class="max-w-2xl mb-8">
+        <div class="text-emerald-400 text-xs tracking-[1.5px] font-semibold">LA ÓRBITA COCO GO</div>
+        <h3 class="section-header text-white mt-2">Una concatenación de guías y cursos relacionados.</h3>
+        <p class="mt-3 text-slate-300">Esta guía es el punto de partida. Cada nuevo curso de la serie se construye sobre el anterior. Vas avanzando de forma ordenada y práctica.</p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="card bg-slate-950 border border-white/10 rounded-3xl p-7">
-          <div class="flex items-start gap-4">
-            <div class="mt-1 text-3xl text-teal-400"><i class="fa-solid fa-book"></i></div>
-            <div class="flex-1">
-              <div class="font-semibold">Guía ChatGPT para Emprendedores (PDF + actualizaciones)</div>
-              <div class="text-sm mt-2 text-slate-400">Prompts probados, flujos de investigación, copywriting, automatizaciones y casos reales aplicados a trading y negocio.</div>
-              <div class="mt-4 text-xs text-teal-400 flex items-center gap-1.5"><i class="fa-solid fa-sync"></i> <span>Actualizaciones trimestrales sin costo</span></div>
-            </div>
-          </div>
+        <!-- Current pilot -->
+        <div class="product-card series-card rounded-3xl bg-slate-950 p-6 border border-emerald-500/40">
+          <div class="pilot-badge mb-4">DISPONIBLE AHORA</div>
+          <div class="font-semibold text-xl">Guía ChatGPT para Emprendedores</div>
+          <div class="text-sm mt-2 text-slate-300">Las bases prácticas de prompting e IA aplicadas a negocio. El piloto y punto de entrada a toda la serie.</div>
+          <div class="mt-4 text-emerald-400 font-medium text-sm">Comprar → $37</div>
         </div>
 
-        <div class="card bg-slate-950 border border-white/10 rounded-3xl p-7">
-          <div class="flex items-start gap-4">
-            <div class="mt-1 text-3xl text-teal-400"><i class="fa-solid fa-chart-bar"></i></div>
-            <div class="flex-1">
-              <div class="font-semibold">Comparador Prop Firms + Plantillas</div>
-              <div class="text-sm mt-2 text-slate-400">Herramienta interactiva + archivos .json y hojas de cálculo para evaluar firms reales (reglas, costos, payouts, fiabilidad).</div>
-              <div class="mt-4 text-xs px-3 py-1 w-fit rounded-full bg-teal-500/10 text-teal-400">Incluye versión offline</div>
-            </div>
-          </div>
+        <div class="product-card series-card rounded-3xl bg-slate-900 p-6 opacity-80">
+          <div class="text-xs uppercase tracking-widest text-slate-400 mb-2">PRÓXIMAMENTE</div>
+          <div class="font-semibold">Prompts Avanzados</div>
+          <div class="text-sm mt-2 text-slate-300">Técnicas de prompting de nivel superior, cadenas de razonamiento y cómo crear tus propias plantillas maestras.</div>
         </div>
 
-        <div class="card bg-slate-950 border border-white/10 rounded-3xl p-7">
-          <div class="flex items-start gap-4">
-            <div class="mt-1 text-3xl text-teal-400"><i class="fa-solid fa-crosshairs"></i></div>
-            <div class="flex-1">
-              <div class="font-semibold">Estrategias de Trading Esenciales</div>
-              <div class="text-sm mt-2 text-slate-400">VCP (Volatility Contraction Pattern), gestión de riesgo, entradas de alta probabilidad y cómo combinarlo con IA para filtrar ideas.</div>
-            </div>
-          </div>
+        <div class="product-card series-card rounded-3xl bg-slate-900 p-6 opacity-80">
+          <div class="text-xs uppercase tracking-widest text-slate-400 mb-2">PRÓXIMAMENTE</div>
+          <div class="font-semibold">Automatizaciones con IA</div>
+          <div class="text-sm mt-2 text-slate-300">Cómo conectar ChatGPT y otras herramientas (Make, Zapier, etc.) para que la IA trabaje por vos de forma continua.</div>
         </div>
 
-        <div class="card bg-slate-950 border border-white/10 rounded-3xl p-7">
-          <div class="flex items-start gap-4">
-            <div class="mt-1 text-3xl text-teal-400"><i class="fa-solid fa-magic"></i></div>
-            <div class="flex-1">
-              <div class="font-semibold">Plantillas de Prompts + Flujos IA</div>
-              <div class="text-sm mt-2 text-slate-400">Colección lista para usar: análisis de empresas, preparación de earnings, screening, redacción de tesis y más. Copia y adapta.</div>
-            </div>
-          </div>
+        <div class="product-card series-card rounded-3xl bg-slate-900 p-6 opacity-80">
+          <div class="text-xs uppercase tracking-widest text-slate-400 mb-2">PRÓXIMAMENTE</div>
+          <div class="font-semibold">IA para Investigación y Decisiones</div>
+          <div class="text-sm mt-2 text-slate-300">Sistemas prácticos para analizar oportunidades, competidores y tomar decisiones más rápidas y fundamentadas.</div>
         </div>
 
-        <div class="card bg-slate-950 border border-white/10 rounded-3xl p-7">
-          <div class="flex items-start gap-4">
-            <div class="mt-1 text-3xl text-teal-400"><i class="fa-solid fa-envelope"></i></div>
-            <div class="flex-1">
-              <div class="font-semibold">Entrega Automatizada Post-Pago</div>
-              <div class="text-sm mt-2 text-slate-400">El email exacto que recibes + el escenario Make/Zapier que lo envía automáticamente cuando se confirma tu pago. Transparente y profesional.</div>
-            </div>
-          </div>
+        <div class="product-card series-card rounded-3xl bg-slate-900 p-6 opacity-80">
+          <div class="text-xs uppercase tracking-widest text-slate-400 mb-2">PRÓXIMAMENTE</div>
+          <div class="font-semibold">IA para Contenido y Ventas</div>
+          <div class="text-sm mt-2 text-slate-300">Flujos para generar copy, contenido y procesos de ventas manteniendo tu voz y estilo personal.</div>
         </div>
 
-        <div class="card bg-slate-950 border border-white/10 rounded-3xl p-7">
-          <div class="flex items-start gap-4">
-            <div class="mt-1 text-3xl text-teal-400"><i class="fa-solid fa-infinity"></i></div>
-            <div class="flex-1">
-              <div class="font-semibold">Acceso de por vida + actualizaciones</div>
-              <div class="text-sm mt-2 text-slate-400">Pagas una sola vez. Cada mejora que agreguemos (nuevas estrategias, prompts actualizados, firms nuevas) llega a tu email sin costo adicional.</div>
-            </div>
-          </div>
+        <div class="product-card series-card rounded-3xl bg-slate-900 p-6 opacity-80">
+          <div class="text-xs uppercase tracking-widest text-slate-400 mb-2">PRÓXIMAMENTE</div>
+          <div class="font-semibold">Sistemas Completos con IA</div>
+          <div class="text-sm mt-2 text-slate-300">Cómo armar flujos end-to-end que combinan varias guías de la serie en sistemas que generan valor real todos los días.</div>
         </div>
       </div>
+
+      <p class="mt-6 text-center text-sm text-slate-400">La serie está pensada para que avances de forma progresiva. Cada nueva guía tiene más sentido si ya tenés las bases de las anteriores.</p>
     </div>
   </section>
 
-  <!-- CÓMO FUNCIONA LA COMPRA (POST-PAGO) -->
-  <section class="max-w-screen-xl mx-auto px-6 py-16">
+  <!-- CÓMO FUNCIONA LA COMPRA Y ENTREGA -->
+  <section id="como-funciona" class="max-w-screen-xl mx-auto px-6 py-14">
     <div class="max-w-2xl mb-8">
-      <div class="text-teal-400 text-xs tracking-[1.5px] font-semibold">PROCESO SIMPLE Y SEGURO</div>
-      <h3 class="section-header text-white mt-2">Compra → Pago confirmado → Email con todo en minutos.</h3>
+      <div class="text-emerald-400 text-xs tracking-[1.5px] font-semibold">COMPRA → ACCESO INMEDIATO</div>
+      <h3 class="section-header text-white mt-2">Simple, transparente y automático.</h3>
     </div>
 
     <div class="grid md:grid-cols-3 gap-5">
-      <div class="rounded-3xl border border-white/10 p-7 bg-slate-900">
-        <div class="font-mono text-teal-400 text-xs mb-3">01</div>
-        <div class="font-semibold mb-1">Haces clic en "Comprar ahora"</div>
-        <div class="text-sm text-slate-400">Te lleva a checkout seguro (Gumroad o Stripe). Pago con tarjeta o lo que prefieras. 1 solo pago.</div>
+      <div class="rounded-3xl border border-white/10 bg-slate-900 p-7">
+        <div class="font-mono text-emerald-400 text-xs mb-3">01</div>
+        <div class="font-semibold mb-2">Elegís y comprás</div>
+        <div class="text-sm text-slate-300">Hacés clic en el botón de la Guía ChatGPT para Emprendedores. Checkout seguro (Gumroad, Stripe o la plataforma que usemos). Un solo pago.</div>
       </div>
-      <div class="rounded-3xl border border-white/10 p-7 bg-slate-900">
-        <div class="font-mono text-teal-400 text-xs mb-3">02</div>
-        <div class="font-semibold mb-1">Confirmación de pago</div>
-        <div class="text-sm text-slate-400">Recibes el recibo. En paralelo se dispara la automatización (Make/Zap) que prepara tu entrega personalizada.</div>
+      <div class="rounded-3xl border border-white/10 bg-slate-900 p-7">
+        <div class="font-mono text-emerald-400 text-xs mb-3">02</div>
+        <div class="font-semibold mb-2">Confirmación automática</div>
+        <div class="text-sm text-slate-300">El sistema detecta el pago y en segundos dispara el email personalizado con tus accesos.</div>
       </div>
-      <div class="rounded-3xl border border-white/10 p-7 bg-slate-900">
-        <div class="font-mono text-teal-400 text-xs mb-3">03</div>
-        <div class="font-semibold mb-1">Email post-pago automático</div>
-        <div class="text-sm text-slate-400">En menos de 60 segundos llega a tu bandeja: links de descarga directos, instrucciones claras y los archivos listos para usar.</div>
-      </div>
-    </div>
-
-    <p class="mt-6 text-xs text-slate-500 max-w-prose">Todo está versionado y respaldado. Si no recibes el email en 10 minutos, contáctanos y te lo enviamos manualmente en el acto.</p>
-  </section>
-
-  <!-- PRECIO / CTA -->
-  <section id="precio" class="border-t border-white/10 bg-slate-900">
-    <div class="max-w-screen-xl mx-auto px-6 py-16">
-      <div class="max-w-xl mx-auto text-center">
-        <div class="inline text-xs tracking-widest text-teal-400 font-medium">PAGO ÚNICO • SIN SUSCRIPCIÓN</div>
-        <div class="mt-3 flex items-baseline justify-center gap-2">
-          <span class="price text-white">$37</span>
-          <span class="text-xl text-slate-400">USD</span>
-        </div>
-        <p class="text-slate-300 mt-2">Un solo pago. Acceso inmediato y de por vida. Actualizaciones gratis para siempre.</p>
-
-        <a href="https://gumroad.com/l/coco-go-fundamentos" target="_blank"
-           class="mt-8 mx-auto cta-btn inline-flex items-center justify-center gap-3 rounded-3xl bg-white hover:bg-slate-100 text-slate-950 px-14 h-14 text-xl font-semibold shadow-2xl shadow-black/50">
-          <span>Comprar ahora • Acceso inmediato</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
-
-        <div class="mt-5 text-xs text-slate-400">Checkout seguro • 14 días de garantía de satisfacción • Factura disponible</div>
+      <div class="rounded-3xl border border-white/10 bg-slate-900 p-7">
+        <div class="font-mono text-emerald-400 text-xs mb-3">03</div>
+        <div class="font-semibold mb-2">Recibís todo por email</div>
+        <div class="text-sm text-slate-300">Llega el email de COCO GO con los links directos a la guía y los recursos. Descargás y empezás inmediatamente.</div>
       </div>
     </div>
-  </section>
 
-  <!-- FAQ -->
-  <section class="max-w-screen-xl mx-auto px-6 py-16">
-    <h4 class="text-center font-display text-3xl tracking-tighter mb-10">Preguntas frecuentes</h4>
-    <div class="max-w-3xl mx-auto divide-y divide-white/10 text-sm">
-      <details class="group py-5">
-        <summary class="flex cursor-pointer items-center justify-between font-medium">¿Cómo recibo los archivos después de pagar?<span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down"></i></span></summary>
-        <div class="pt-3 text-slate-300">Al confirmar el pago se activa automáticamente el escenario de Make/Zapier (o el sistema de la plataforma de pago). Recibes un email profesional con links directos de descarga (Google Drive o equivalente) + instrucciones paso a paso. Todo en menos de un minuto.</div>
-      </details>
-      <details class="group py-5">
-        <summary class="flex cursor-pointer items-center justify-between font-medium">¿Necesito experiencia previa en trading?<span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down"></i></span></summary>
-        <div class="pt-3 text-slate-300">No. La guía está pensada para quien quiere construir bases sólidas desde cero o que ya opera pero sigue tomando decisiones inconsistentes. Incluye conceptos + aplicación práctica.</div>
-      </details>
-      <details class="group py-5">
-        <summary class="flex cursor-pointer items-center justify-between font-medium">¿Recibiré actualizaciones futuras?<span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down"></i></span></summary>
-        <div class="pt-3 text-slate-300">Sí. Cada vez que agregamos nuevo material (nuevas firms, prompts mejorados, estrategias adicionales) lo recibes por email sin tener que pagar nada más.</div>
-      </details>
-      <details class="group py-5">
-        <summary class="flex cursor-pointer items-center justify-between font-medium">¿Puedo pedir reembolso?<span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down"></i></span></summary>
-        <div class="pt-3 text-slate-300">Tienes 14 días. Si el material no cumple lo que prometemos, envíanos un email y procesamos el reembolso completo. Sin preguntas.</div>
-      </details>
-      <details class="group py-5">
-        <summary class="flex cursor-pointer items-center justify-between font-medium">¿Dónde se aloja el sitio y los archivos?<span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down"></i></span></summary>
-        <div class="pt-3 text-slate-300">Este sitio de venta está en GitHub Pages (costo cero, rápido y confiable). Los archivos del producto se entregan vía enlace privado (Drive u otro almacenamiento seguro). El repositorio del producto es privado.</div>
-      </details>
-    </div>
+    <div class="mt-6 text-sm text-slate-400 max-w-prose">Si por alguna razón no recibís el email en los primeros minutos, respondés el mismo correo y te lo resolvemos manualmente en el acto.</div>
   </section>
 
   <!-- FINAL CTA -->
-  <div class="border-t border-white/10">
+  <div class="border-t border-white/10 bg-slate-900">
     <div class="max-w-screen-xl mx-auto px-6 py-12 text-center">
-      <p class="text-xl text-slate-200">Un sistema. Una compra. Resultados que se mantienen.</p>
-      <a href="#precio" class="mt-6 inline-flex cta-btn items-center justify-center rounded-3xl bg-teal-600 hover:bg-teal-500 px-10 h-12 font-semibold">Comprar COCO GO Fundamentos ahora</a>
-      <div class="mt-4 text-xs text-slate-500">coco-go.github.io/coco-go-marketing • Próximamente dominio propio (coco-go.com o similar)</div>
+      <p class="text-2xl font-semibold tracking-tight">Empezá con la Guía ChatGPT para Emprendedores.<br>Después seguí con el resto de la serie cuando quieras.</p>
+      
+      <a href="#piloto" 
+         class="mt-8 inline-flex cta-btn items-center justify-center rounded-3xl bg-emerald-600 hover:bg-emerald-500 px-10 h-14 text-lg font-semibold">
+        Comprar Guía ChatGPT para Emprendedores ahora
+      </a>
+
+      <div class="mt-5 text-xs text-slate-400">COCO GO — Solo guías y cursos prácticos. Sin mezclar con otras cosas.</div>
     </div>
   </div>
 
   <footer class="border-t border-white/10 py-8 text-xs text-slate-500">
     <div class="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-3">
-      <div>© COCO GO. Hecho para emprendedores y traders que quieren claridad.</div>
+      <div>© COCO GO. Guías y cursos para hispanohablantes que quieren usar IA de verdad.</div>
       <div class="flex gap-5">
-        <a href="#" class="hover:text-slate-300">Política de privacidad</a>
-        <a href="#" class="hover:text-slate-300">Términos</a>
-        <a href="mailto:hola@coco-go.com" class="hover:text-slate-300">Contacto</a>
+        <a href="mailto:hola@cocogo.com" class="hover:text-slate-300">Contacto</a>
+        <span>Entrega por email automático</span>
       </div>
     </div>
   </footer>
 
   <script>
-    // Tailwind script
-    function initTailwind() {
-      document.documentElement.style.setProperty('--accent', '#14b8a6');
-    }
+    function initTailwind() {}
     initTailwind();
-
-    // Simple scroll spy for nav (optional polish)
-    const nav = document.querySelector('nav');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) nav.classList.add('nav-scrolled');
-      else nav.classList.remove('nav-scrolled');
-    }, { passive: true });
   </script>
 </body>
 </html>
