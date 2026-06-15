@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamentos de ChatGPT para Principiantes (Nivel Cero) — Guía Gratis 2026 | COCO GO</title>
+  <meta name="description" content="Guía gratis de Fundamentos de ChatGPT para principiantes y emprendedores nivel cero. Aprendé a crear tu cuenta, prompts básicos, cómo refinar respuestas y evitar errores comunes en 5 minutos.">
+  <style>
+    :root {
+      --bg: #0B0F1A;
+      --surface: #141B2D;
+      --text: #F0F4FC;
+      --muted: #94A3B8;
+      --coral: #FF6B4A;
+      --green: #10A37F;
+      --border: #2A3655;
+      --radius: 12px;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .container { max-width: 720px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 32px; }
+    .logo { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(16, 163, 127, 0.15);
+      color: #1ED9A0;
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    h1 { font-size: 1.8rem; margin: 0 0 8px; }
+    .subtitle { color: var(--muted); font-size: 1rem; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .card h2 { font-size: 1.1rem; margin: 0 0 12px; color: var(--coral); }
+    pre {
+      background: #0B0F1A;
+      padding: 14px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+    }
+    .step { display: flex; gap: 12px; margin-bottom: 16px; }
+    .step-num {
+      width: 28px; height: 28px; background: var(--green); color: white;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 700; flex-shrink: 0; font-size: 0.85rem;
+    }
+    .btn {
+      background: var(--coral); color: white; border: none; padding: 10px 18px;
+      border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 0.95rem;
+    }
+    .btn:hover { background: #FF8566; }
+    .note { font-size: 0.9rem; color: var(--muted); background: rgba(255,107,74,0.08); padding: 12px; border-radius: 8px; }
+    .footer { text-align: center; margin-top: 40px; font-size: 0.85rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 40 40" aria-hidden="true">
+          <rect width="40" height="40" rx="10" fill="#FF6B4A"/>
+          <g fill="none" stroke="white" stroke-width="3" stroke-linecap="round">
+            <path d="M11 12 L19 20 L11 28"/>
+            <path d="M19 12 L27 20 L19 28" opacity="0.85"/>
+          </g>
+        </svg>
+        <strong>COCO GO</strong>
+      </div>
+      <span class="badge">RECURSO GRATIS • NIVEL CERO • 2026</span>
+      <h1>Fundamentos de ChatGPT para Principiantes (Nivel Cero)</h1>
+      <p class="subtitle">Lo que necesitás saber antes de configurar tu negocio. 5-7 minutos que te dan confianza básica y te ahorran horas de frustración.</p>
+    </div>
+
+    <div class="card">
+      <h2>0. Qué es un LLM (en 30 segundos, sin tecnicismos)</h2>
+      <p>Un LLM (como ChatGPT) es un modelo entrenado con millones de textos para predecir la palabra siguiente. No “entiende” como un humano: genera respuestas probables basadas en patrones. Por eso <strong>siempre verificás</strong> datos importantes y lo usás como asistente, no como verdad absoluta.</p>
+      <p class="note">Esto es lo mínimo que necesitás para no frustrarte. El resto lo aprendés usando.</p>
+    </div>
+
+    <div class="card">
+      <h2>1. Creá tu cuenta (si todavía no la tenés)</h2>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <p>Entrá a <a href="https://chatgpt.com" target="_blank">chatgpt.com</a></p>
+          <p>Usá tu email o Google. La versión <strong>gratuita</strong> alcanza para toda esta guía y para empezar a ahorrar tiempo real en tu negocio.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>2. Tu primer prompt (prueba sin presión)</h2>
+      <p>Antes de contarle nada de tu negocio, probá esto para ganar confianza:</p>
+      <pre id="prompt-base">Hola, soy [tu nombre] y tengo un [ej: negocio de pastelería casera]. 
+Explícame en 4 líneas cómo podés ayudarme a ahorrar tiempo esta semana. 
+Respuesta en español argentino, tono cercano y práctico.</pre>
+      <button class="btn" onclick="copyPrompt('prompt-base')">Copiar prompt</button>
+      <p class="note">Pegalo en un chat nuevo. Mirá qué te contesta. Si te gusta, genial. Si no, seguí al paso 3.</p>
+    </div>
+
+    <div class="card">
+      <h2>3. La estructura básica que siempre funciona</h2>
+      <p>La mayoría de los resultados malos vienen de prompts vagos. Usá esta estructura mínima:</p>
+      <ul>
+        <li><strong>Rol:</strong> “Sos mi asistente de [tu rol]”</li>
+        <li><strong>Contexto:</strong> Quién sos, qué vendés, a quién le vendés, tono.</li>
+        <li><strong>Tarea:</strong> Qué querés exactamente.</li>
+        <li><strong>Formato:</strong> Largo, estilo, qué incluir/excluir.</li>
+        <li><strong>Restricciones:</strong> “Máx 5 líneas”, “sin frases corporativas”, “en español argentino”.</li>
+      </ul>
+      <p class="note">Ejemplo completo = el prompt que copiaste arriba ya tiene casi toda la estructura.</p>
+    </div>
+
+    <div class="card">
+      <h2>4. Cómo refinar cuando sale mal (la habilidad más importante)</h2>
+      <p>Si la respuesta es genérica, formal, larga o no te sirve:</p>
+      <pre id="prompt-refinar">Este resultado no me sirve.
+Problemas: [muy genérico / muy formal / sin mi precio / no menciona cupcakes].
+Reescribilo cumpliendo:
+- Máx 5 líneas
+- Tono cercano
+- Incluí precio desde $8.000
+- Listo para copiar y pegar</pre>
+      <button class="btn" onclick="copyPrompt('prompt-refinar')">Copiar prompt de refinamiento</button>
+      <p class="note">Este hábito (probar → decir exactamente qué está mal → pedir corrección) es lo que separa a la gente que “usa ChatGPT” de la que realmente ahorra horas.</p>
+    </div>
+
+    <div class="card">
+      <h2>5. Reglas de oro para principiantes</h2>
+      <ul>
+        <li>1 tarea = 1 chat nuevo (no mezcles todo en una sola conversación).</li>
+        <li><strong>Revisá siempre los outputs</strong> antes de usarlos (datos, precios, hechos). ChatGPT inventa (alucinaciones). Nunca copies ciego.</li>
+        <li>Empezá siempre con el plan gratuito. Cuando sientas que te limita mucho, evaluás Plus.</li>
+        <li>Guardá lo que te sirve en una carpeta “Sistema IA/” en tu celular o Google Drive. No confíes en el historial.</li>
+        <li><strong>Uso responsable:</strong> la IA es una herramienta, no un reemplazo de tu criterio. Revisá impacto en clientes, datos sensibles y decisiones importantes. Siempre hay oversight humano.</li>
+      </ul>
+    </div>
+
+    <div class="note">
+      <strong>Próximo paso recomendado:</strong> Cuando termines estos fundamentos, volvé a la guía principal “ChatGPT para Emprendedores en 7 Días” y empezá por el Día 1 con tu negocio real. Vas a notar la diferencia inmediatamente. Recordá: usá datos reales de tu negocio, revisá los outputs y guardá todo en “Sistema IA/”.
+    </div>
+
+    <!-- SEO / AEO: Preguntas frecuentes para que nos encuentren -->
+    <div class="card">
+      <h2>Preguntas frecuentes (para que sepas si esto es para vos)</h2>
+      <details>
+        <summary>¿Esto sirve si nunca usé ChatGPT?</summary>
+        <p>Sí. Está hecho exactamente para nivel cero. Empezamos desde crear la cuenta y un primer prompt súper simple.</p>
+      </details>
+      <details>
+        <summary>¿Necesito pagar ChatGPT Plus?</summary>
+        <p>No. La versión gratuita alcanza para toda esta guía y para empezar a ahorrar tiempo real en tu negocio.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto tiempo me lleva?</summary>
+        <p>Entre 3 y 7 minutos si vas directo. El objetivo es que salgas con confianza básica para no frustrarte después.</p>
+      </details>
+      <details>
+        <summary>¿Esto reemplaza la guía completa de 7 días?</summary>
+        <p>No. Este es solo el “arranque en frío”. La guía completa te da los 7 entregables reales + el sistema para usarlos cada lunes.</p>
+      </details>
+    </div>
+
+    <!-- CTA DIRECTO A LA GUÍA COMPLETA (máxima conversión, sin paso extra obligatorio) -->
+    <div class="card" style="border: 2px solid var(--coral); background: rgba(255,107,74,0.08);">
+      <h2 style="color: var(--coral);">¿Querés pasar ya al kit completo con los 7 entregables reales?</h2>
+      <p>Este recurso gratis te da los fundamentos básicos para que no te quedes atascado. La guía principal es el <strong>kit que realmente convierte</strong>:</p>
+      <ul>
+        <li>7 archivos listos para usar y guardar en "Sistema IA/" (perfil, voz, calendario, plantillas de venta, flujos, ficha de idea y manual de operación)</li>
+        <li>Todo el sistema probado para operarlo cada lunes sin releer nada</li>
+        <li>Exigencia real: datos de tu negocio + iteración + prueba en operación</li>
+      </ul>
+
+      <p style="margin-top:16px; font-weight:700;">Usá el código <strong>COCOCLIENTE</strong> (15% off) y comprá directo (sin comisiones de plataforma):</p>
+      <p><a href="https://checkout.lemonsqueezy.com/checkout/your-product?coupon=COCOCLIENTE" style="color:var(--coral); text-decoration:underline; font-weight:700;">https://cocogo.lat/comprar</a></p>
+
+      <p style="font-size:0.9rem; color:var(--muted); margin-top:12px;">Este recurso es 100% gratis y público (ideal si estás en cero). La guía completa (el kit que realmente convierte) la comprás en Hotmart o Gumroad con el código <strong>COCOCLIENTE</strong>. El enlace protegido te llega por email después de la compra.</p>
+    </div>
+
+    <div class="footer">
+      COCO GO · Recurso gratuito 2026 para que empieces sin frustrarte<br>
+      La guía completa “ChatGPT para Emprendedores en 7 Días” (el kit que convierte) está en Hotmart y Gumroad con código <strong>COCOCLIENTE</strong> (15% off)
+    </div>
+  </div>
+
+  <script>
+    function copyPrompt(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const original = event.target.innerText;
+        event.target.innerText = "¡Copiado!";
+        setTimeout(() => {
+          if (event.target) event.target.innerText = original;
+        }, 1400);
+      });
+    }
+  </script>
+</body>
+</html>
