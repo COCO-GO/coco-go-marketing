@@ -668,10 +668,13 @@ label.day-pill {
   opacity: 1;
   transform: translateY(0);
 }
-/* Fix: las tarjetas del final (después de "Profundizá solo donde te dolió") aparecen rápido al scrollear, sin tardar una barbaridad */
+/* Fix fuerte para que las tarjetas del final (después de "Profundizá solo donde te dolió") carguen AL INSTANTE al scrollear, sin demora */
+.roadmap-cta .card,
 .roadmap-cta .card.reveal,
-.roadmap-cta .roadmap-card {
-  transition: opacity 0.2s ease, transform 0.2s ease !important;
+.roadmap-cta .card.reveal.visible {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
   animation: none !important;
 }
 
@@ -3419,86 +3422,43 @@ Máx. 5 líneas por acción. Directo.</pre>
     <div class="container">
       <p class="roadmap-eyebrow">COCO GO · Qué sigue</p>
       <h2 id="roadmap-title">Profundizá solo donde te dolió</h2>
-      <p class="roadmap-lead">Si esta guía te funcionó, el siguiente paso <strong>no es más teoría</strong> — es resolver el cuello de botella que anotaste en el Día 1. Cada guía abajo usa el mismo método: 7 días, entregables reales, manual al final. <strong>Tu feedback decide el orden en que lanzamos las próximas.</strong></p>
 
-      <!-- FEEDBACK DEL CLIENTE — EXCLUSIVAMENTE POR INSTAGRAM (para generar comunidad de verdad) -->
-      <div class="card prompt-box reveal" style="border-left:4px solid var(--coral); background:rgba(255,107,74,0.06);">
+      <!-- FEEDBACK POR INSTAGRAM - PRINCIPAL CTA FINAL (comunidad primero) -->
+      <div class="card prompt-box" style="border-left:4px solid var(--coral); background:rgba(255,107,74,0.06);">
         <h3>📣 Feedback por Instagram (lo pedimos de verdad)</h3>
-        <p>Terminaste los 7 días. <strong>Mandanos un DM a nuestra cuenta de Instagram</strong> con este texto (buscá “COCO GO”). Incluí tu email para que te avisemos cuando lancemos los próximos cursos y generemos más comunidad.</p>
+        <p>Terminaste los 7 días. <strong>Mandanos un DM a nuestra cuenta de Instagram</strong> con este texto (buscá “COCO GO”). Incluí tu email para que te avisemos de los próximos lanzamientos y sigamos en contacto.</p>
         <ul style="margin:8px 0 10px 18px; line-height:1.45; font-size:0.95rem;">
           <li>¿Cuántos minutos por semana ahorrás ahora?</li>
           <li>¿Qué día te fue más útil (y por qué)?</li>
-          <li>¿Qué problema te quedó o qué curso necesitás después (rubro específico, Claude, Videos, 14 días, Gemini…)?</li>
+          <li>¿Qué problema te quedó o qué te gustaría ver después?</li>
         </ul>
-        <p style="font-size:0.9rem; margin-bottom:10px;"><strong>Tu respuesta decide el orden de los próximos lanzamientos.</strong> (Guía por rubro, Claude 7 días, Videos, 14 días digital, Bundle 3 IAs…)</p>
+        <p style="font-size:0.9rem; margin-bottom:10px;"><strong>Tu feedback es lo que usamos para decidir qué construir después.</strong></p>
 
         <pre class="prompt-text" id="prompt-feedback">Hola COCO GO, feedback de la guía ChatGPT 7 Días:
 
 Negocio / rubro: [TU NEGOCIO]
 Minutos ahorrados por semana: ____
 Día más útil: ____ (por qué)
-Qué me quedó o quiero en el próximo curso:
-[describí el dolor o la sugerencia]
-Email (para avisarte cuando lancemos el próximo): ____
+Qué me quedó o me gustaría después:
+[describí el dolor o la idea]
+Email (para avisarte de próximos): ____
 Testimonio corto (si querés):
 “_______________________________”
 
 Código cliente: COCOCLIENTE</pre>
         <button class="btn-copy" data-target="prompt-feedback">Copiar texto listo para DM en Instagram</button>
 
-        <p style="margin-top:10px; font-size:0.9rem;">Pegalo en DM de Instagram (COCO GO). Así vemos todo en un solo lugar y armamos comunidad con los que ya terminaron la guía.</p>
-        <p style="font-size:0.8rem; color:var(--brand-muted);">O si preferís: <a href="mailto:cocogo.hola@gmail.com?subject=Feedback%20ChatGPT%207%20D%C3%ADas">enviar por email como respaldo</a></p>
+        <p style="margin-top:10px; font-size:0.9rem;">Pegalo en DM de Instagram (COCO GO). Es la mejor forma de que veamos tu caso y armemos comunidad con quienes ya terminaron.</p>
+        <p style="font-size:0.8rem; color:var(--brand-muted);">Respaldo: <a href="mailto:cocogo.hola@gmail.com?subject=Feedback%20ChatGPT%207%20D%C3%ADas">enviar por email</a></p>
       </div>
 
-      <div class="card carta reveal">
-        <h3>🤝 Compra directa COCO GO</h3>
-        <p>Si llegaste por Gumroad o Hotmart, bienvenido — ahí nos encontraste. Para <strong>siguientes guías</strong> (las que ves abajo), comprá directo en <a href="https://cocogo.lat">https://cocogo.lat</a>: mismo contenido de valor, sin comisión de plataforma, mejor precio para quien ya implementó esta guía.</p>
-        <p>Código de cliente: <strong>COCOCLIENTE</strong> (15%). Escribinos a <a href="mailto:cocogo.hola@gmail.com">cocogo.hola@gmail.com</a> con ese código si la tienda aún no está publicada. <em>Tu feedback arriba nos ayuda a saber qué contestar con el próximo lanzamiento.</em></p>
+      <div class="card carta">
+        <h3>Usá lo que ya tenés</h3>
+        <p>Lo más importante ahora es que abras tu carpeta <strong>Sistema IA/</strong> los lunes y uses los archivos que armaste. Ahí está el valor real de la guía.</p>
+        <p>Si querés actualizaciones de próximos lanzamientos o contarnos cómo te fue, el lugar es Instagram DM (o el email de arriba).</p>
       </div>
 
-      <div class="roadmap-grid">
-        <a class="roadmap-card" href="mailto:cocogo.hola@gmail.com?subject=Inter%C3%A9s%20%E2%80%94%20Gu%C3%ADa%20por%20rubro&amp;body=Hola%20COCO%20GO%2C%0A%0ATermin%C3%A9%20ChatGPT%207%20d%C3%ADas.%20Mi%20rubro%3A%20_______%0A%0AProblema%20que%20me%20qued%C3%B3%3A%20_______%0A%0AQuiero%20comprar%20directo%20con%20c%C3%B3digo%20COCOCLIENTE%0A%0AGracias">
-          <span class="roadmap-icon" aria-hidden="true">🎯</span>
-          <div class="roadmap-body">
-            <strong>Si adaptar ejemplos te costó → Guía por rubro</strong>
-            <span>Coaches, restaurantes, freelancers, ecommerce: mismos 7 días con lenguaje y casos de tu industria. Menos edición, más velocidad.</span>
-          </div>
-          <span class="roadmap-action">Directo</span>
-        </a>
-        <a class="roadmap-card" href="mailto:cocogo.hola@gmail.com?subject=Inter%C3%A9s%20%E2%80%94%20Videos%20entregables&amp;body=Quiero%20los%20videos%20%E2%80%9Cas%C3%AD%20se%20ve%20terminado%E2%80%9D.%20C%C3%B3digo%20COCOCLIENTE">
-          <span class="roadmap-icon" aria-hidden="true">▶️</span>
-          <div class="roadmap-body">
-            <strong>Si preferís ver antes de hacer → Videos</strong>
-            <span>2–3 min por día mostrando el entregable terminado. Para quien aprende mirando, no leyendo pasos.</span>
-          </div>
-          <span class="roadmap-action">Directo</span>
-        </a>
-        <a class="roadmap-card" href="mailto:cocogo.hola@gmail.com?subject=Inter%C3%A9s%20%E2%80%94%20Claude%207%20d%C3%ADas&amp;body=Quiero%20Claude%20para%20Emprendedores.%20C%C3%B3digo%20COCOCLIENTE">
-          <span class="roadmap-icon" aria-hidden="true">🟣</span>
-          <div class="roadmap-body">
-            <strong>Si necesitás análisis largo → Claude</strong>
-            <span>Propuestas, informes, comparativas y estrategia con documentos extensos — mismo sistema de implementación.</span>
-          </div>
-          <span class="roadmap-action">Directo</span>
-        </a>
-        <a class="roadmap-card" href="mailto:cocogo.hola@gmail.com?subject=Inter%C3%A9s%20%E2%80%94%20Producto%20digital%2014d&amp;body=Quiero%20la%20gu%C3%ADa%2014%20d%C3%ADas.%20C%C3%B3digo%20COCOCLIENTE">
-          <span class="roadmap-icon" aria-hidden="true">🚀</span>
-          <div class="roadmap-body">
-            <strong>Si querés vender lo que sabés → 14 días digital</strong>
-            <span>De idea a producto en venta. Para quien ya domina IA y quiere su primer ingreso pasivo.</span>
-          </div>
-          <span class="roadmap-action">Directo</span>
-        </a>
-        <a class="roadmap-card roadmap-card--wide" href="mailto:cocogo.hola@gmail.com?subject=Inter%C3%A9s%20%E2%80%94%20Bundle%203%20IAs&amp;body=Quiero%20bundle%20ChatGPT%2BClaude%2BGemini.%20C%C3%B3digo%20COCOCLIENTE">
-          <span class="roadmap-icon" aria-hidden="true">📦</span>
-          <div class="roadmap-body">
-            <strong>Si querés el stack completo → Bundle 3 IAs</strong>
-            <span>Un manual por herramienta. Para emprendedores que usan IA todos los días y no quieren quedarse con una sola.</span>
-          </div>
-          <span class="roadmap-action">Lista VIP</span>
-        </a>
-      </div>
-      <p class="roadmap-note">COCO GO vende <strong>implementación</strong>, no prompts sueltos. Si algo de arriba resuelve un problema que ya pagaste con tiempo, tiene sentido. Si no terminaste los 7 entregables, volvé arriba — ahí está el valor.</p>
+      <p class="roadmap-note">COCO GO vende <strong>implementación</strong>, no promesas de cursos que todavía no existen. Gracias por el feedback — de verdad lo usamos.</p>
     </div>
   </section>
 
