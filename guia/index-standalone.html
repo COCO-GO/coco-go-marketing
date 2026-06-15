@@ -661,12 +661,18 @@ label.day-pill {
 .card.reveal {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 1.4s ease, transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card.reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+/* Fix: las tarjetas del final (después de "Profundizá solo donde te dolió") aparecen rápido al scrollear, sin tardar una barbaridad */
+.roadmap-cta .card.reveal,
+.roadmap-cta .roadmap-card {
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+  animation: none !important;
 }
 
 .card h3 { font-size: 0.92rem; margin-bottom: 0.65rem; font-weight: 700; }
@@ -3415,34 +3421,33 @@ Máx. 5 líneas por acción. Directo.</pre>
       <h2 id="roadmap-title">Profundizá solo donde te dolió</h2>
       <p class="roadmap-lead">Si esta guía te funcionó, el siguiente paso <strong>no es más teoría</strong> — es resolver el cuello de botella que anotaste en el Día 1. Cada guía abajo usa el mismo método: 7 días, entregables reales, manual al final. <strong>Tu feedback decide el orden en que lanzamos las próximas.</strong></p>
 
-      <!-- FEEDBACK DEL CLIENTE — lo pedimos de verdad (después de completar) -->
+      <!-- FEEDBACK DEL CLIENTE — EXCLUSIVAMENTE POR INSTAGRAM (para generar comunidad de verdad) -->
       <div class="card prompt-box reveal" style="border-left:4px solid var(--coral); background:rgba(255,107,74,0.06);">
-        <h3>📣 Feedback (lo pedimos de verdad)</h3>
-        <p>Terminaste (o casi) los 7 días. Contanos en 30 segundos — <strong>esto no es para “me gusta”</strong>, es para que sepamos exactamente qué lanzar primero y cómo mejorarlo.</p>
+        <h3>📣 Feedback por Instagram (lo pedimos de verdad)</h3>
+        <p>Terminaste los 7 días. <strong>Mandanos un DM a nuestra cuenta de Instagram</strong> con este texto (buscá “COCO GO”). Incluí tu email para que te avisemos cuando lancemos los próximos cursos y generemos más comunidad.</p>
         <ul style="margin:8px 0 10px 18px; line-height:1.45; font-size:0.95rem;">
           <li>¿Cuántos minutos por semana ahorrás ahora?</li>
           <li>¿Qué día te fue más útil (y por qué)?</li>
-          <li>¿Qué problema te quedó o qué curso necesitás después (rubro específico, Claude, Videos, 14 días para vender digital, Gemini, Bundle…)?</li>
+          <li>¿Qué problema te quedó o qué curso necesitás después (rubro específico, Claude, Videos, 14 días, Gemini…)?</li>
         </ul>
-        <p style="font-size:0.9rem; margin-bottom:10px;"><strong>Tu respuesta + el diagnóstico del Día 1 = el orden de los próximos lanzamientos.</strong> (Guías por rubro, Claude 7 días, Videos entregables, Producto digital 14 días, Bundle 3 IAs, y expansiones a Gemini/Claude Nivel Cero).</p>
+        <p style="font-size:0.9rem; margin-bottom:10px;"><strong>Tu respuesta decide el orden de los próximos lanzamientos.</strong> (Guía por rubro, Claude 7 días, Videos, 14 días digital, Bundle 3 IAs…)</p>
 
-        <pre class="prompt-text" id="prompt-feedback">Feedback ChatGPT 7 Días — COCO GO
+        <pre class="prompt-text" id="prompt-feedback">Hola COCO GO, feedback de la guía ChatGPT 7 Días:
 
 Negocio / rubro: [TU NEGOCIO]
 Minutos ahorrados por semana: ____
 Día más útil: ____ (por qué)
 Qué me quedó o quiero en el próximo curso:
 [describí el dolor o la sugerencia]
+Email (para avisarte cuando lancemos el próximo): ____
 Testimonio corto (si querés):
 “_______________________________”
 
 Código cliente: COCOCLIENTE</pre>
-        <button class="btn-copy" data-target="prompt-feedback">Copiar plantilla de feedback</button>
+        <button class="btn-copy" data-target="prompt-feedback">Copiar texto listo para DM en Instagram</button>
 
-        <div style="margin-top:10px;">
-          <a href="mailto:cocogo.hola@gmail.com?subject=Feedback%20ChatGPT%207%20D%C3%ADas%20%E2%80%94%20COCO%20GO&body=Feedback%20ChatGPT%207%20D%C3%ADas%20%E2%80%94%20COCO%20GO%0A%0ANegocio%20%2F%20rubro%3A%20%5BTU%20NEGOCIO%5D%0AMinutos%20ahorrados%20por%20semana%3A%20____%0AD%C3%ADa%20m%C3%A1s%20%C3%BAtil%3A%20____%20(por%20qu%C3%A9)%0A%0AQu%C3%A9%20me%20qued%C3%B3%20o%20quiero%20en%20el%20pr%C3%B3ximo%20curso%3A%0A%5Bdescrib%C3%AD%20el%20dolor%20o%20la%20sugerencia%5D%0A%0ATestimonio%20corto%20(si%20quer%C3%A9s)%3A%0A%E2%80%9C_______________________________%E2%80%9D%0A%0AC%C3%B3digo%20cliente%3A%20COCOCLIENTE%0A%0AGracias%20por%20la%20gu%C3%ADa." style="background:var(--coral);color:white;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:700;display:inline-block;font-size:0.95rem;">Enviar feedback por email ahora</a>
-        </div>
-        <p style="font-size:0.8rem; color:var(--brand-muted); margin-top:6px;">O pegá la plantilla en WhatsApp/Instagram. Respondemos todos los que terminaron los 7 días.</p>
+        <p style="margin-top:10px; font-size:0.9rem;">Pegalo en DM de Instagram (COCO GO). Así vemos todo en un solo lugar y armamos comunidad con los que ya terminaron la guía.</p>
+        <p style="font-size:0.8rem; color:var(--brand-muted);">O si preferís: <a href="mailto:cocogo.hola@gmail.com?subject=Feedback%20ChatGPT%207%20D%C3%ADas">enviar por email como respaldo</a></p>
       </div>
 
       <div class="card carta reveal">
