@@ -1,25 +1,24 @@
-KIT COCO GO — ChatGPT Emprendedores (7 soluciones)
-==================================================
+KIT COCO GO — ChatGPT para tu negocio (8 módulos)
+=================================================
 
 QUÉ COMPRASTE
 -------------
-No es un PDF para leer. Es un kit de 7 soluciones: cada día resolvés
-un problema y guardás un archivo en tu carpeta Sistema IA/.
+No es un PDF para leer. Es un kit de 8 módulos: cada uno resuelve
+un problema concreto de tu negocio y te deja un archivo listo para usar.
 
-CÓMO USAR (LO MÁS SIMPLE)
--------------------------
+CÓMO ENTRAR (LO MÁS SIMPLE)
+---------------------------
 Abrí este enlace en tu celular o computadora:
 
-  https://pabloompre.github.io/cocogo-guia-chatgpt/?k=COCO-GPT7-2026
+  https://coco-go.github.io/coco-go-marketing/guia/?k=COCO-GPT7-2026
 
-Código de acceso: COCO-GPT7-2026
-(También te lo enviamos por email después de comprar.)
+El enlace ya trae tu acceso. Si te pide código, ingresá: COCO-GPT7-2026
 
 EN EL CELULAR
 -------------
-1. Tocá el enlace → se abre la guía
-2. Tocá Glosario, Día 1, Día 2… en la barra de navegación
-3. En el glosario: deslizá ← → (una tarjeta a la vez)
+1. Tocá el enlace -> se abre la guía
+2. Tocá Glosario, Módulo 1, Módulo 2... en la barra de navegación
+3. En el glosario: deslizá <- -> (una tarjeta a la vez)
 4. Para copiar un prompt: botón Copiar, o mantené presionado el texto gris
 
 EN LA COMPUTADORA
