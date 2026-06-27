@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>ChatGPT para tu negocio — COCO GO</title>
+<meta name="description" content="Curso práctico de ChatGPT para emprendedores y PyMEs. 8 módulos con prompts, plantillas y entregables reales. En español, sin tecnicismos." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="ChatGPT para tu negocio — COCO GO" />
+<meta property="og:description" content="8 módulos concatenados. Cada uno resuelve un problema concreto y te deja un archivo usable esta semana." />
+<meta property="og:site_name" content="COCO GO" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#070A12; --bg:#0A0E1A; --surface:#0F1525; --surface-2:#141C30;
+  --text:#EAF0FB; --muted:#9AA8C2; --faint:#64718C;
+  --coral:#FF6B4A; --coral-rgb:255,107,74;
+  --border:rgba(150,170,210,.12); --border-strong:rgba(150,170,210,.22);
+  --theme:#10A37F; --theme-light:#34E0B0; --theme-rgb:16,163,127; --theme-dark:#0B7C60;
+  --display:'Bricolage Grotesque',serif; --body:'Hanken Grotesk',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+  --maxw:920px; --r:18px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;min-height:100vh}
+#bg{position:fixed;inset:0;z-index:-2;width:100%;height:100%;display:block}
+body::before{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(60% 50% at 15% 4%, rgba(var(--theme-rgb),.16), transparent 60%),radial-gradient(45% 40% at 90% 96%, rgba(var(--coral-rgb),.08), transparent 60%),linear-gradient(180deg, var(--ink), var(--bg) 45%, var(--ink))}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+/* radio tabs (hidden) */
+.tab{position:absolute;opacity:0;pointer-events:none}
+
+/* brand bar */
+.brandbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);background:linear-gradient(180deg,rgba(10,14,26,.82),rgba(10,14,26,.5));border-bottom:1px solid var(--border)}
+.brandbar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{display:flex;align-items:center}
+.brand-logo{height:30px;width:auto;display:block}
+.theme-chip{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:.78rem;color:var(--muted);padding:6px 11px;border:1px solid var(--border-strong);border-radius:999px;background:rgba(var(--theme-rgb),.07)}
+.theme-chip .dot{width:8px;height:8px;border-radius:50%;background:var(--theme-light);box-shadow:0 0 10px 1px var(--theme-light)}
+
+/* nav */
+.modnav{position:sticky;top:58px;z-index:40;padding:12px 0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(10,14,26,.78),rgba(10,14,26,.35))}
+.modnav .scroll{display:flex;gap:9px;overflow-x:auto;scrollbar-width:none}
+.modnav .scroll::-webkit-scrollbar{display:none}
+.pill{flex-shrink:0;font-size:.86rem;font-weight:600;color:var(--muted);padding:9px 16px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.025);cursor:pointer;white-space:nowrap;transition:all .22s;user-select:none}
+.pill:hover{color:var(--text);border-color:var(--border-strong)}
+
+/* panel visibility (13 tabs) */
+.panel{display:none;padding:34px 0 40px}
+#t-inicio:checked~main #p-inicio,
+#t-gloss:checked~main #p-gloss,
+#t-m1:checked~main #p-m1,
+#t-m2:checked~main #p-m2,
+#t-m3:checked~main #p-m3,
+#t-m4:checked~main #p-m4,
+#t-m5:checked~main #p-m5,
+#t-m6:checked~main #p-m6,
+#t-m7:checked~main #p-m7,
+#t-m8:checked~main #p-m8,
+#t-apps:checked~main #p-apps,
+#t-bonus:checked~main #p-bonus,
+#t-verif:checked~main #p-verif{display:block;animation:rise .55s cubic-bezier(.2,.7,.3,1)}
+
+/* active pill (13 tabs) */
+#t-inicio:checked~.modnav .p-inicio,
+#t-gloss:checked~.modnav .p-gloss,
+#t-m1:checked~.modnav .p-m1,
+#t-m2:checked~.modnav .p-m2,
+#t-m3:checked~.modnav .p-m3,
+#t-m4:checked~.modnav .p-m4,
+#t-m5:checked~.modnav .p-m5,
+#t-m6:checked~.modnav .p-m6,
+#t-m7:checked~.modnav .p-m7,
+#t-m8:checked~.modnav .p-m8,
+#t-apps:checked~.modnav .p-apps,
+#t-bonus:checked~.modnav .p-bonus,
+#t-verif:checked~.modnav .p-verif{color:#04130E;background:linear-gradient(135deg,var(--theme-light),var(--theme));border-color:transparent;box-shadow:0 6px 20px rgba(var(--theme-rgb),.4)}
+
+/* headings */
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--theme-light);margin-bottom:16px}
+.eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--theme-light);position:relative}
+.eyebrow .pulse::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--theme-light);animation:ping 2.4s ease-out infinite}
+@keyframes ping{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.2);opacity:0}}
+.sec-head{display:flex;align-items:center;gap:15px;margin-bottom:8px}
+.numchip{font-family:var(--mono);font-weight:500;font-size:.9rem;color:var(--theme-light);width:44px;height:44px;flex-shrink:0;display:grid;place-items:center;border-radius:12px;background:rgba(var(--theme-rgb),.1);border:1px solid rgba(var(--theme-rgb),.3)}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3.6vw,2.05rem);letter-spacing:-.025em;line-height:1.1}
+.sec-sub{color:var(--muted);margin:6px 0 22px 59px;font-size:1.02rem}
+@media(max-width:560px){.sec-sub{margin-left:0}}
+
+/* hero */
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,7vw,4.2rem);line-height:1.03;letter-spacing:-.035em;margin-bottom:20px}
+h1 .grad{background:linear-gradient(105deg,var(--theme-light),var(--theme) 55%,var(--coral));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(1.05rem,2.2vw,1.28rem);color:var(--muted);max-width:42ch;margin-bottom:30px}
+.cta-row{display:flex;flex-wrap:wrap;gap:13px;align-items:center}
+.btn{font-weight:700;font-size:1rem;padding:15px 26px;border-radius:14px;border:0;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .2s cubic-bezier(.34,1.3,.64,1),box-shadow .25s;user-select:none}
+.btn-primary{background:linear-gradient(135deg,var(--coral),#E04A28);color:#fff;box-shadow:0 10px 30px rgba(var(--coral-rgb),.38),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(var(--coral-rgb),.5)}
+.btn-ghost{background:rgba(255,255,255,.04);color:var(--text);border:1px solid var(--border-strong)}
+.btn-ghost:hover{transform:translateY(-2px);border-color:var(--theme-light);color:var(--theme-light)}
+.trust{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;padding-top:24px;border-top:1px solid var(--border)}
+.trust .t{display:flex;flex-direction:column;gap:2px}
+.trust .t b{font-family:var(--display);font-weight:700;font-size:1.5rem;line-height:1}
+.trust .t span{font-size:.82rem;color:var(--faint)}
+
+/* cards */
+.card{background:linear-gradient(165deg,var(--surface),var(--surface-2));border:1px solid var(--border);border-radius:var(--r);padding:24px;position:relative;overflow:hidden;margin-bottom:16px}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
+.card h3{font-family:var(--display);font-weight:700;font-size:1.1rem;margin-bottom:10px;letter-spacing:-.01em}
+.card p{color:var(--muted);font-size:1rem;margin-bottom:8px}
+.card p:last-child{margin-bottom:0}
+.card p strong{color:var(--text)}
+.card ol,.card ul{padding-left:1.2rem;color:var(--muted);font-size:.97rem;margin-bottom:8px}
+.card li{margin-bottom:.45rem}
+.card li strong{color:var(--text)}
+.card code{font-family:var(--mono);font-size:.84rem;color:var(--theme-light);background:rgba(var(--theme-rgb),.1);padding:2px 6px;border-radius:4px}
+.card a{color:var(--theme-light);text-decoration:none;border-bottom:1px solid rgba(var(--theme-rgb),.3)}
+.card a:hover{border-bottom-color:var(--theme-light)}
+
+/* fastlane */
+.fastlane{display:flex;gap:14px;background:rgba(var(--theme-rgb),.08);border:1px solid rgba(var(--theme-rgb),.28);border-radius:14px;padding:15px 17px;margin-bottom:20px}
+.fastlane .bolt{flex-shrink:0;width:33px;height:33px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,var(--theme-light),var(--theme));color:#04130E;font-size:1.05rem;box-shadow:0 4px 14px rgba(var(--theme-rgb),.45)}
+.fastlane .label{font-size:.73rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--theme-light);display:block;margin-bottom:3px}
+.fastlane p{font-size:.95rem;color:var(--text);margin:0}
+
+/* prompts */
+.prompt{background:var(--ink);border:1px solid var(--border-strong);border-radius:13px;overflow:hidden;margin-top:12px;margin-bottom:4px}
+.prompt .top{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
+.prompt .top span{font-family:var(--mono);font-size:.74rem;color:var(--faint);letter-spacing:.05em}
+.copy{font-size:.78rem;font-weight:600;color:var(--theme-light);background:rgba(var(--theme-rgb),.1);border:1px solid rgba(var(--theme-rgb),.3);padding:5px 12px;border-radius:8px;cursor:pointer;transition:all .2s;font-family:var(--body)}
+.copy:hover{background:rgba(var(--theme-rgb),.2)}
+.prompt pre{font-family:var(--mono);font-size:.85rem;line-height:1.65;color:#CBD7EC;padding:16px;white-space:pre-wrap;margin:0}
+.entregable{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:.84rem;font-weight:600;color:var(--theme-light);padding:7px 13px;border-radius:999px;border:1px dashed rgba(var(--theme-rgb),.4);background:rgba(var(--theme-rgb),.05)}
+
+/* kit tree */
+.kit-tree{font-family:var(--mono);font-size:.82rem;background:var(--ink);border:1px solid var(--border);border-radius:10px;padding:14px;color:#CBD7EC;white-space:pre;overflow-x:auto;margin:10px 0}
+
+/* glosario */
+.gloss-search{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border-strong);border-radius:12px;padding:11px 15px;margin-bottom:14px}
+.gloss-search input{flex:1;background:transparent;border:0;color:var(--text);font-family:var(--body);font-size:1rem;outline:none}
+.gloss-search input::placeholder{color:var(--faint)}
+.gloss-list{display:flex;flex-direction:column;gap:7px}
+.gitem{border:1px solid var(--border);border-radius:11px;background:var(--surface);overflow:hidden}
+.gterm{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;background:transparent;border:0;cursor:pointer;color:var(--text);font-family:var(--body);font-weight:600;font-size:1rem;padding:13px 16px;text-align:left;transition:color .2s}
+.gterm:hover{color:var(--theme-light)}
+.gterm .chev{flex-shrink:0;color:var(--theme-light);font-size:1.2rem;line-height:1;transition:transform .25s}
+.gterm.open{color:var(--theme-light)}
+.gterm.open .chev{transform:rotate(45deg)}
+.gdef{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.gdef p{padding:0 16px 14px;color:var(--muted);font-size:.96rem;margin:0}
+.gloss-note{margin-top:13px;font-size:.88rem;color:var(--faint)}
+
+/* aplicaciones */
+.app-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:13px;margin-top:16px;margin-bottom:20px}
+.app{background:linear-gradient(165deg,var(--surface),var(--surface-2));border:1px solid var(--border);border-radius:14px;padding:19px}
+.app .ic{width:37px;height:37px;border-radius:10px;display:grid;place-items:center;background:rgba(var(--theme-rgb),.1);border:1px solid rgba(var(--theme-rgb),.25);font-size:1.05rem;margin-bottom:11px}
+.app h4{font-family:var(--display);font-weight:700;font-size:1.04rem;margin-bottom:6px}
+.app p{font-size:.93rem;color:var(--muted);margin:0}
+.app ul{font-size:.9rem;color:var(--muted);padding-left:1.1rem;margin-top:8px}
+.app li{margin-bottom:.3rem}
+.fw-row{display:flex;gap:13px;flex-wrap:wrap;margin-top:16px}
+.fw-box{flex:1;min-width:240px;border-radius:12px;padding:14px}
+.fw-box h4{font-size:.85rem;font-weight:700;margin-bottom:6px}
+.fw-box ul{padding-left:1.1rem;color:var(--muted);font-size:.88rem}
+.fw-box li{margin-bottom:.25rem}
+.fw-str{border-left:4px solid #34D399;background:rgba(52,211,153,.06)}
+.fw-str h4{color:#34D399}
+.fw-weak{border-left:4px solid #FBBF24;background:rgba(251,191,36,.05)}
+.fw-weak h4{color:#FBBF24}
+
+/* bonus */
+.bonus-cat{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--coral);margin:24px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+
+/* verificación */
+.check-list{display:flex;flex-direction:column}
+.check{display:flex;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid var(--border)}
+.check:last-child{border-bottom:0}
+.check .box{flex-shrink:0;width:24px;height:24px;border-radius:7px;border:1.5px solid var(--border-strong);display:grid;place-items:center;color:var(--theme-light);font-size:.9rem}
+.check p{font-size:.98rem;color:var(--text);margin:0}
+.check p small{display:block;color:var(--faint);font-size:.85rem}
+
+/* cross-sell */
+.next{margin-top:26px;background:radial-gradient(120% 140% at 100% 0%, rgba(var(--coral-rgb),.14), transparent 55%),linear-gradient(165deg,var(--surface),var(--surface-2));border:1px solid var(--border-strong);border-radius:20px;padding:28px;position:relative;overflow:hidden}
+.next .kicker{font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.next h3{font-family:var(--display);font-weight:800;font-size:clamp(1.35rem,3.5vw,1.9rem);letter-spacing:-.025em;margin-bottom:8px}
+.next h3 .c{color:var(--coral)}
+.next p{color:var(--muted);max-width:46ch;margin-bottom:18px}
+.next .go{display:inline-flex;align-items:center;gap:9px;font-weight:700;color:var(--text);text-decoration:none;padding:13px 22px;border-radius:13px;background:rgba(255,255,255,.05);border:1px solid var(--border-strong);transition:all .25s}
+.next .go:hover{transform:translateX(3px);border-color:var(--coral);color:var(--coral)}
+
+footer{text-align:center;padding:40px 20px 54px;color:var(--faint);font-size:.86rem;border-top:1px solid var(--border);margin-top:30px}
+.foot-logo{width:150px;height:auto;margin-bottom:14px;opacity:.96}
+footer p{margin:4px auto;max-width:64ch}
+footer a{color:var(--theme-light);text-decoration:none}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.panel{animation:none!important}.eyebrow .pulse::after{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+
+<!-- 13 pestañas -->
+<input class="tab" type="radio" name="coco-tab" id="t-inicio" checked>
+<input class="tab" type="radio" name="coco-tab" id="t-gloss">
+<input class="tab" type="radio" name="coco-tab" id="t-m1">
+<input class="tab" type="radio" name="coco-tab" id="t-m2">
+<input class="tab" type="radio" name="coco-tab" id="t-m3">
+<input class="tab" type="radio" name="coco-tab" id="t-m4">
+<input class="tab" type="radio" name="coco-tab" id="t-m5">
+<input class="tab" type="radio" name="coco-tab" id="t-m6">
+<input class="tab" type="radio" name="coco-tab" id="t-m7">
+<input class="tab" type="radio" name="coco-tab" id="t-m8">
+<input class="tab" type="radio" name="coco-tab" id="t-apps">
+<input class="tab" type="radio" name="coco-tab" id="t-bonus">
+<input class="tab" type="radio" name="coco-tab" id="t-verif">
+
+<header class="brandbar">
+  <div class="wrap">
+    <div class="brand">
+      <img src="assets/logo-coco-go.svg" class="brand-logo" alt="COCO GO">
+    </div>
+    <span class="theme-chip"><span class="dot"></span>Curso · ChatGPT</span>
+  </div>
+</header>
+
+<nav class="modnav">
+  <div class="wrap"><div class="scroll">
+    <label class="pill p-inicio" for="t-inicio">Inicio</label>
+    <label class="pill p-gloss" for="t-gloss">Glosario</label>
+    <label class="pill p-m1" for="t-m1">1 · Configuración</label>
+    <label class="pill p-m2" for="t-m2">2 · Voz de marca</label>
+    <label class="pill p-m3" for="t-m3">3 · Contenido</label>
+    <label class="pill p-m4" for="t-m4">4 · Imágenes</label>
+    <label class="pill p-m5" for="t-m5">5 · Ventas</label>
+    <label class="pill p-m6" for="t-m6">6 · Flujos</label>
+    <label class="pill p-m7" for="t-m7">7 · Investigación</label>
+    <label class="pill p-m8" for="t-m8">8 · Sistema</label>
+    <label class="pill p-apps" for="t-apps">Aplicaciones</label>
+    <label class="pill p-bonus" for="t-bonus">Bonus</label>
+    <label class="pill p-verif" for="t-verif">Verificación</label>
+  </div></div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ═══ INICIO ═══ -->
+  <section class="panel" id="p-inicio">
+    <span class="eyebrow"><span class="pulse"></span>Primeros pasos con ChatGPT · nivel básico</span>
+    <h1>ChatGPT para tu negocio,<br><span class="grad">paso a paso.</span></h1>
+    <p class="lead">No compraste un curso — compraste soluciones concretas. Cada módulo resuelve un problema real y te deja un archivo usable que abrís el lunes.</p>
+    <div class="cta-row">
+      <label class="btn btn-primary" for="t-m1">Empezar el módulo 1 →</label>
+      <label class="btn btn-ghost" for="t-gloss">Ver el glosario</label>
+    </div>
+    <div class="trust">
+      <div class="t"><b>8</b><span>módulos concatenados</span></div>
+      <div class="t"><b>0</b><span>jerga sin explicar</span></div>
+      <div class="t"><b>100%</b><span>en tu celular</span></div>
+      <div class="t"><b>15–30 min</b><span>por módulo</span></div>
+    </div>
+  </section>
+
+  <!-- ═══ GLOSARIO ═══ -->
+  <section class="panel" id="p-gloss">
+    <div class="sec-head"><span class="numchip" style="font-size:1.25rem">Aa</span><h2>Glosario · 22 conceptos clave</h2></div>
+    <p class="sec-sub">Antes de arrancar, leé el estándar de calidad y el mapa del kit. El glosario está para cuando una palabra te trabe.</p>
+
+    <div class="card">
+      <h3>📦 Tu kit al terminar — soluciones en archivos</h3>
+      <p>No es material de estudio. Es lo que abrís cuando tenés un problema en el negocio:</p>
+      <pre class="kit-tree">Sistema IA/
+├── 01-perfil          → ChatGPT ya conoce tu negocio
+├── 02-voz-de-marca    → textos que suenan a vos, no a robot
+├── 03-calendario      → semana de contenido resuelta
+├── 04-imagenes        → visuals profesionales de marca
+├── 05-mensajes-venta  → ventas por WhatsApp/email en 2 min
+├── 06-flujos          → tareas repetitivas en minutos
+├── 07-ficha-idea      → saber si una idea vale (o no)
+└── 08-manual-operacion → cómo operar con IA cada semana</pre>
+    </div>
+
+    <div class="card">
+      <h3>⏱️ Estándar de calidad — un módulo está listo si cumplís las 5</h3>
+      <ol>
+        <li><strong>Datos reales</strong> — precios, servicios, clientes y tono tuyo, no placeholders.</li>
+        <li><strong>Al menos una iteración</strong> — si sonó genérico, pediste ajuste concreto.</li>
+        <li><strong>Prueba en operación</strong> — enviaste, publicaste o cronometraste.</li>
+        <li><strong>Guardado en Sistema IA</strong> — archivo nombrado, encontrable el lunes.</li>
+        <li><strong>Repetible sin esta guía</strong> — sabés qué prompt usar y dónde está el entregable.</li>
+      </ol>
+    </div>
+
+    <div class="gloss-search"><span>🔎</span><input id="gloss-q" placeholder="Buscar un término…" autocomplete="off"></div>
+    <div class="gloss-list" id="gloss-list">
+
+      <div class="gitem"><button class="gterm">ChatGPT<span class="chev">+</span></button><div class="gdef"><p>Asistente de inteligencia artificial que conversa por texto. Lo usás como un chat: le escribís lo que necesitás y te responde en segundos. Podés pedirle que redacte emails, arme calendarios o analice ideas. <em>No reemplaza tu criterio</em> — acelera el trabajo repetitivo.</p></div></div>
+
+      <div class="gitem"><button class="gterm">IA (Inteligencia Artificial)<span class="chev">+</span></button><div class="gdef"><p>Tecnología que aprende patrones de millones de textos para generar respuestas útiles. Para vos como emprendedor, significa tener un <em>asistente 24/7</em> que redacta, resume, organiza y propone — sin contratar a nadie extra. No necesitás entender cómo funciona por dentro; solo <strong>saber pedirle bien</strong> las cosas.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Prompt<span class="chev">+</span></button><div class="gdef"><p>El mensaje o instrucción que le das a ChatGPT. Como darle una orden clara a un empleado nuevo: cuanto más <em>contexto</em> (quién sos, qué vendés, qué tono querés), mejor resultado. Ejemplo malo: "escribí un post". Ejemplo bueno: "Soy nutricionista en Buenos Aires, escribí un post de Instagram de 100 palabras sobre desayunos rápidos para mamás ocupadas, tono cercano".</p></div></div>
+
+      <div class="gitem"><button class="gterm">Contexto<span class="chev">+</span></button><div class="gdef"><p>Toda la información que le das a ChatGPT para que entienda <em>tu situación</em>: negocio, audiencia, objetivo, tono y restricciones. Sin contexto, las respuestas son genéricas. Con buen contexto, parecen hechas por alguien que <strong>conoce tu marca</strong>.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Instrucciones personalizadas<span class="chev">+</span></button><div class="gdef"><p>Espacio en ChatGPT donde cargás información <em>fija</em> sobre tu negocio: qué hacés, a quién le vendés, cómo hablás. ChatGPT las lee en cada conversación nueva, así <strong>no repetís el contexto</strong> cada vez. Es la configuración más importante del Módulo 1.</p></div></div>
+
+      <div class="gitem"><button class="gterm">GPT / GPT-4<span class="chev">+</span></button><div class="gdef"><p>El "motor" detrás de ChatGPT. Los <strong>modelos más nuevos</strong> son más capaces: entienden mejor el contexto, escriben con más matices y cometen menos errores. En el plan gratuito usás un modelo básico; con ChatGPT Plus accedés a modelos más potentes. Para empezar, el <em>plan free alcanza</em> perfectamente.</p></div></div>
+
+      <div class="gitem"><button class="gterm">CTA (Call to Action)<span class="chev">+</span></button><div class="gdef"><p>La frase que le dice al lector <em>qué hacer después</em> de ver tu contenido. Ejemplos: "Escribime por WhatsApp", "Agendá tu consulta gratis", "Comentá si te pasó lo mismo". Sin CTA, tu post educa pero <strong>no genera contacto ni ventas</strong>.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Hook<span class="chev">+</span></button><div class="gdef"><p>La primera línea de tu publicación — la que <em>frena el scroll</em>. Tiene que generar curiosidad, identificación o sorpresa en menos de 2 segundos. Ejemplo: "Perdí 3 clientes por responder tarde. Esto cambió todo." Un buen hook vale más que <strong>10 párrafos aburridos</strong>.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Lead<span class="chev">+</span></button><div class="gdef"><p>Una persona interesada en tu producto o servicio que <em>todavía no compró</em>. Puede ser alguien que te escribió por Instagram, dejó su email o pidió un presupuesto. ChatGPT te ayuda a redactar los mensajes de seguimiento <strong>sin sonar robótico</strong>.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Voz de marca<span class="chev">+</span></button><div class="gdef"><p>Cómo suena tu negocio cuando escribe o habla: formal o cercano, técnico o simple, serio o divertido. Definirla evita que ChatGPT te suene como una <em>multinacional genérica</em>. Se define con <strong>3 palabras de tono</strong>, palabras prohibidas y un ejemplo real de cómo escribís vos.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Micronicho<span class="chev">+</span></button><div class="gdef"><p>Un segmento <em>muy específico</em> de mercado. En vez de "coach", sos "coach de productividad para madres emprendedoras en México". Cuanto más específico, mejor responde ChatGPT porque entiende exactamente a quién le hablás.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Token<span class="chev">+</span></button><div class="gdef"><p>Unidad de texto que ChatGPT procesa (aproximadamente 4 caracteres en español = 1 token). Si tu prompt es muy largo, ChatGPT puede <em>"olvidar" el inicio</em>. Solución: empezá conversación nueva para tareas distintas y sé <strong>conciso</strong> en tus instrucciones.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Iteración<span class="chev">+</span></button><div class="gdef"><p>Pedir ajustes hasta que el resultado te convenza. ChatGPT rara vez acierta en el primer intento — y eso es normal. Frases útiles: <em>"más corto"</em>, <em>"menos formal"</em>, <em>"agregá un CTA"</em>. La calidad final depende de cuánto <strong>refinás</strong>, no de cuánto pedís de una vez.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Plantilla reutilizable<span class="chev">+</span></button><div class="gdef"><p>Un prompt con <em>campos entre corchetes</em> que reutilizás cambiando solo las variables. Ejemplo: "Escribí un email de seguimiento para [NOMBRE] que consultó por [SERVICIO]." Te ahorra tiempo y mantiene <strong>calidad consistente</strong> en tareas repetitivas.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Alucinación<span class="chev">+</span></button><div class="gdef"><p>Cuando ChatGPT inventa datos, estadísticas o referencias que <em>suenan reales pero no lo son</em>. Siempre validá cifras, leyes y datos técnicos. Para copy y ideas creativas es menos riesgoso; para <strong>decisiones legales o médicas</strong>, nunca confíes solo en la IA.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Embudo de ventas<span class="chev">+</span></button><div class="gdef"><p>El camino que recorre un cliente: de <em>desconocido</em> → interesado → consulta → compra. ChatGPT te ayuda en cada etapa: contenido que atrae, mensajes que nutren, emails que cierran. Pensar en embudo evita publicar contenido <strong>bonito pero que no vende</strong>.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Automatización<span class="chev">+</span></button><div class="gdef"><p>Delegar lo <em>repetitivo</em> (FAQs, seguimientos, calendarios, resúmenes) para liberar tiempo de lo que solo vos podés hacer: vender, decidir, relacionarte. ChatGPT es tu primer paso de automatización <strong>sin código ni herramientas extra</strong>.</p></div></div>
+
+      <div class="gitem"><button class="gterm">FAQ<span class="chev">+</span></button><div class="gdef"><p>Preguntas frecuentes que te repiten tus clientes. ChatGPT puede generar respuestas listas para WhatsApp, web o Instagram. Tener FAQs bien redactadas <em>reduce consultas repetitivas</em> y acelera la decisión de compra.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Calendario editorial<span class="chev">+</span></button><div class="gdef"><p>Tu plan de publicaciones: qué subir, en qué red y con qué objetivo cada semana. ChatGPT lo arma en minutos si le das tu negocio, pilares de contenido y frecuencia. Evita el <em>"¿qué publico hoy?"</em> y mantiene <strong>consistencia</strong> sin agotarte.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Copywriting<span class="chev">+</span></button><div class="gdef"><p>Escribir textos que <em>persuaden</em>: posts, emails, landing pages, mensajes de venta. No es literatura — es comunicación con objetivo (clic, respuesta, compra). ChatGPT acelera el borrador; vos ajustás el tono y la <strong>verdad de tu negocio</strong>.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Sistema IA<span class="chev">+</span></button><div class="gdef"><p>Tu carpeta de trabajo — en Notas del celular, Google Docs o archivos. Ahí guardás cada entregable de la guía con nombre fijo (<em>01-perfil</em>, <em>05-mensajes-venta</em>, etc.). No es decoración: es lo que abrís cada lunes en vez de releer la guía entera.</p></div></div>
+
+      <div class="gitem"><button class="gterm">Conversación nueva<span class="chev">+</span></button><div class="gdef"><p>En ChatGPT es como empezar una reunión en blanco. Usala cuando cambiás de tarea (de posts a emails, de ventas a operaciones). Mantener todo en un solo chat largo mezcla contextos y <em>empeora los resultados</em>. Regla práctica: <strong>1 tarea = 1 chat</strong>.</p></div></div>
+
+    </div>
+    <p class="gloss-note">Tocá un término para ver la definición. El buscador filtra en tiempo real.</p>
+  </section>
+
+  <!-- ═══ MÓDULO 1 ═══ -->
+  <section class="panel" id="p-m1">
+    <div class="sec-head"><span class="numchip">01</span><h2>Configuración en 20 minutos</h2></div>
+    <p class="sec-sub">El día que separa "uso ChatGPT a veces" de "tengo un asistente que conoce mi negocio". Sin este paso, todo lo demás suena genérico.</p>
+
+    <div class="fastlane"><span class="bolt">⚡</span><div><span class="label">Carril rápido</span><p>Abrí ChatGPT → Configuración → Instrucciones personalizadas, pegá la plantilla <strong>Perfil de Negocio</strong> de abajo con tus datos reales y guardá.</p></div></div>
+
+    <div class="card">
+      <h3>✅ Tu solución al terminar</h3>
+      <p><strong>Problema:</strong> ChatGPT no conoce tu negocio — todo suena genérico y lo editás igual.</p>
+      <p><strong>Te llevás:</strong> <code>01-perfil</code> + instrucciones cargadas en ChatGPT + 1 mensaje de WhatsApp usable.</p>
+      <p><strong>Lo usás cuando:</strong> abras cualquier chat nuevo y necesités respuesta con tu tono, precio y cliente ideal — sin re-explicar todo.</p>
+    </div>
+
+    <div class="card">
+      <h3>📋 Pasos</h3>
+      <ol>
+        <li>Completá el <strong>diagnóstico</strong> de abajo y guardá la respuesta en una nota llamada <strong>"Sistema IA"</strong>.</li>
+        <li>Entrá a <strong>chatgpt.com</strong> y creá tu cuenta con email o Google. El plan <strong>gratuito</strong> alcanza para completar esta guía.</li>
+        <li>Hacé clic en tu <strong>foto de perfil</strong> → <strong>Configuración</strong> → <strong>Personalización</strong> → <strong>Instrucciones personalizadas</strong>.</li>
+        <li>Vas a ver 3 campos. En el campo 1, pegá la plantilla <strong>Perfil de Negocio</strong> de abajo con tus datos reales.</li>
+        <li>En el campo 2, escribí: <em>"Respondé siempre en español latinoamericano, con tono [TU TONO]. Frases cortas. Sin relleno corporativo. Dá ejemplos aplicados a mi negocio."</em></li>
+        <li>Hacé clic en <strong>Guardar</strong>. Abrí un chat nuevo y enviá el <strong>prompt de prueba</strong>.</li>
+        <li>Si la respuesta suena genérica, agregá un ejemplo real de cómo escribís con clientes y pedí que lo imite.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>🔍 Prompt de diagnóstico (5 min)</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · diagnóstico</span><button class="copy">Copiar</button></div>
+        <pre>Antes de configurar nada, ayudame a enfocar esta guía en MI negocio:
+1) ¿Qué vendo y a quién? (1 frase concreta)
+2) ¿Qué tarea me roba más tiempo hoy? (ej: responder WhatsApp, crear posts, presupuestos)
+3) ¿Qué resultado necesito en 7 días? Elegí uno: más ventas / más contenido publicado / más tiempo libre
+4) ¿Por qué canal vendo más hoy? (Instagram, WhatsApp, email, local físico, otro)
+Con mis respuestas:
+- Decime qué módulos priorizar
+- Qué entregable me va a impactar más esta semana
+Sé directo. Español latinoamericano.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📎 Plantilla — Perfil de Negocio</h3>
+      <div class="prompt">
+        <div class="top"><span>instrucciones personalizadas · campo 1</span><button class="copy">Copiar</button></div>
+        <pre>Sos mi asistente de negocio. Mi empresa: [NOMBRE].
+Vendo: [PRODUCTO/SERVICIO]. Precio o rango: [DESDE $X / PACK $Y].
+Mi cliente ideal: [QUIÉN — específico, no "todos"].
+Por qué me eligen vs. competencia: [1 FRASE REAL].
+Canal principal de ventas: [WhatsApp / Instagram / local / email].
+Mi tono de marca: [3 PALABRAS: ej. cercano, directo, práctico].
+País/mercado: [EJ: Argentina, México, Colombia].
+Objeción que más escucho: [EJ: "está caro" / "lo pienso"].
+Siempre respondé en español latinoamericano, con acciones concretas y ejemplos aplicados a mi negocio.
+No uses frases vacías como "en el mundo actual" o "es importante destacar".</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🧪 Prompt de prueba</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · prueba</span><button class="copy">Copiar</button></div>
+        <pre>Escribí un mensaje de WhatsApp de 3 líneas para presentar mi negocio a un cliente nuevo. Que suene humano, no robótico. Incluí un CTA para agendar una llamada de 15 minutos.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>⚠️ Error común</h3>
+      <p>Dejar las instrucciones vacías o poner solo "sos un asistente útil". Sin contexto de negocio, ChatGPT suena igual para todos. Invertí 10 minutos en el perfil y ahorrás horas de edición después.</p>
+    </div>
+
+    <div class="card">
+      <h3>✓ Listo cuando…</h3>
+      <p>Abrís un chat nuevo, pegás el prompt de prueba <strong>sin agregar contexto extra</strong>, y la respuesta menciona tu negocio, tu cliente ideal y suena al tono que elegiste.</p>
+    </div>
+
+    <span class="entregable">📦 Entregable · 01-perfil — asistente configurado</span>
+  </section>
+
+  <!-- ═══ MÓDULO 2 ═══ -->
+  <section class="panel" id="p-m2">
+    <div class="sec-head"><span class="numchip">02</span><h2>Tu voz de marca con IA</h2></div>
+    <p class="sec-sub">Definís por qué un cliente te elige a vos y no al que vende más barato. La voz de marca es confianza en cada mensaje.</p>
+
+    <div class="fastlane"><span class="bolt">⚡</span><div><span class="label">Carril rápido</span><p>Pegale a ChatGPT un texto real tuyo + 3 palabras de tono (plantilla <strong>Voz de Marca</strong>) y pedile que escriba imitando ese estilo.</p></div></div>
+
+    <div class="card">
+      <h3>✅ Tu solución al terminar</h3>
+      <p><strong>Problema:</strong> Tu contenido suena a IA o a agencia — el cliente no confía.</p>
+      <p><strong>Te llevás:</strong> <code>02-voz-de-marca</code> + 3 publicaciones listas para salir de tu cuenta hoy.</p>
+      <p><strong>Lo usás cuando:</strong> pidas cualquier post, email o mensaje — ChatGPT imita tu tono.</p>
+    </div>
+
+    <div class="card">
+      <h3>📋 Pasos</h3>
+      <ol>
+        <li>Elegí <strong>3 palabras</strong> que definen tu tono (ej: cercano, directo, experto).</li>
+        <li>Listá <strong>3–5 palabras o frases</strong> que nunca usarías (ej: "sinergia", "líder del mercado").</li>
+        <li>Buscá un texto tuyo real: un post, un email o un WhatsApp. Mínimo 5 líneas.</li>
+        <li>Completá la plantilla <strong>Voz de Marca</strong> y actualizá tus Instrucciones personalizadas.</li>
+        <li>Pedile a ChatGPT que genere <strong>3 posts de prueba</strong> (Instagram, LinkedIn, WhatsApp status).</li>
+        <li>Leé cada texto en voz alta. Si no suena a vos, pedí ajustes hasta que suene a conversación tuya.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>📎 Plantilla — Voz de Marca</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · voz de marca</span><button class="copy">Copiar</button></div>
+        <pre>Actualizá mi voz de marca:
+- Tono (3 palabras): [EJ: cercano, claro, práctico]
+- Palabras prohibidas: [LISTA]
+- Ejemplo de cómo escribo yo:
+"""
+[PEGÁ ACÁ UN TEXTO REAL TUYO — post, email o WhatsApp]
+"""
+Cuando escribas por mí, imitá este estilo. Frases cortas. Sin relleno.
+Si dudás entre formal e informal, elegí informal.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📱 Generar 3 posts de prueba</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · posts</span><button class="copy">Copiar</button></div>
+        <pre>Con mi voz de marca, escribí 3 publicaciones distintas sobre [TEMA DE ESTA SEMANA]:
+1) Instagram (máx. 120 palabras + 5 hashtags relevantes)
+2) LinkedIn (tono profesional pero humano, máx. 150 palabras)
+3) WhatsApp estado (máx. 2 líneas + CTA)
+Sin emojis excesivos.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>⚠️ Error común</h3>
+      <p>Aceptar el primer resultado. La voz de marca se afina en la 2.ª o 3.ª iteración. También: no dar ejemplos reales tuyos. Sin muestra de cómo escribís, ChatGPT inventa un tono que no es el tuyo.</p>
+    </div>
+
+    <div class="card">
+      <h3>✓ Listo cuando…</h3>
+      <p>Leés un post en voz alta y pensás <em>"esto podría salir de mi cuenta hoy"</em>. Los 3 textos tienen CTA distinto por canal y cero frases corporativas de tu lista prohibida.</p>
+    </div>
+
+    <span class="entregable">📦 Entregable · 02-voz-de-marca — identidad escrita</span>
+  </section>
+
+  <!-- ═══ MÓDULO 3 ═══ -->
+  <section class="panel" id="p-m3">
+    <div class="sec-head"><span class="numchip">03</span><h2>Contenido para redes en 30 min/semana</h2></div>
+    <p class="sec-sub">Cortás el "¿qué publico hoy?" que te come la cabeza. En 30 minutos dejás la semana resuelta.</p>
+
+    <div class="fastlane"><span class="bolt">⚡</span><div><span class="label">Carril rápido</span><p>Corré el prompt <strong>Calendario</strong> con tu negocio y 3 pilares, y publicá o programá 1 pieza hoy.</p></div></div>
+
+    <div class="card">
+      <h3>✅ Tu solución al terminar</h3>
+      <p><strong>Problema:</strong> Cada semana perdés horas decidiendo qué publicar — o no publicás y perdés consultas.</p>
+      <p><strong>Te llevás:</strong> <code>03-calendario-[fecha]</code> — 7 piezas con hook, copy, CTA y <strong>1 ya publicada o programada</strong>.</p>
+      <p><strong>Lo usás cuando:</strong> sea lunes — abrís el archivo y copiás sin pedir ideas nuevas.</p>
+    </div>
+
+    <div class="card">
+      <h3>📋 Pasos</h3>
+      <ol>
+        <li>Elegí <strong>1 red principal</strong> (Instagram, LinkedIn o TikTok). No intentés las tres a la vez.</li>
+        <li>Definí <strong>3 pilares de contenido</strong> (ej: educativo, testimonio/caso real, oferta/promo).</li>
+        <li>Usá el prompt <strong>Calendario</strong> y revisá que cada pieza tenga hook + CTA claro.</li>
+        <li>Adaptá 2 publicaciones al formato (reel, carrusel, story) con el prompt de adaptación.</li>
+        <li>Guardá el calendario en Notas o Google Docs con la fecha de la semana.</li>
+        <li><strong>Programá o publicá 1 hoy</strong> — aunque sea story o post simple. Sin publicación real, el calendario es ejercicio de escritorio.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>📅 Prompt — Calendario semanal</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · calendario</span><button class="copy">Copiar</button></div>
+        <pre>Soy [NEGOCIO]. Mi audiencia: [CLIENTE IDEAL].
+Creá calendario de contenido para [RED SOCIAL].
+Pilares: [PILAR 1], [PILAR 2], [PILAR 3].
+Por cada día incluí:
+- Título interno
+- Hook (primera línea que frena el scroll)
+- Copy completo (máx. 150 palabras)
+- CTA concreto
+- Formato sugerido (reel, carrusel, post, story)
+Usá mi voz de marca. Español latinoamericano.
+Prohibido: hooks genéricos, CTAs vagos ("contáctanos"), o copiar sin mencionar mi oferta concreta.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🎬 Adaptar a formato reel</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · reel</span><button class="copy">Copiar</button></div>
+        <pre>Tomá el post del [DÍA X] del calendario y convertilo en guion de reel de 30 segundos.
+Estructura: hook visual (3 seg) → problema → solución → CTA.
+Lenguaje hablado, como si le explicaras a un amigo.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>⚠️ Error común</h3>
+      <p>Publicar sin CTA. Cada pieza debe invitar a una acción concreta: escribir, comentar, agendar, guardar el post. También: crear contenido para 3 redes distintas el primer día — mejor dominar una.</p>
+    </div>
+
+    <div class="card">
+      <h3>✓ Listo cuando…</h3>
+      <p>Tenés 7 piezas con <strong>fecha, hook y CTA</strong>, <strong>1 ya publicada o programada</strong>, y podés sacar 2 más esta semana copiando del calendario.</p>
+    </div>
+
+    <span class="entregable">📦 Entregable · 03-calendario-[fecha] — semana de contenido resuelta</span>
+  </section>
+
+  <!-- ═══ MÓDULO 4 ═══ -->
+  <section class="panel" id="p-m4">
+    <div class="sec-head"><span class="numchip">04</span><h2>Generación de Imágenes con ChatGPT</h2></div>
+    <p class="sec-sub">Generás visuals profesionales de marca sin diseñador ni fotos genéricas. Las mejores imágenes nacen de prompts específicos + iteración + revisión humana.</p>
+
+    <div class="fastlane"><span class="bolt">⚡</span><div><span class="label">Carril rápido</span><p>Pedile a ChatGPT 1 imagen con tu estilo de marca (prompt base de abajo), refinala una vez y usala en un post.</p></div></div>
+
+    <div class="card">
+      <h3>✅ Tu solución al terminar</h3>
+      <p><strong>Problema:</strong> Tus imágenes son inconsistentes con tu marca — no paran el scroll ni generan confianza.</p>
+      <p><strong>Te llevás:</strong> <code>04-imagenes</code> — estilo de marca definido + 8+ imágenes generadas + prompts + 2 usadas en publicaciones reales.</p>
+      <p><strong>Lo usás cuando:</strong> necesités una imagen para carrusel, story, banner o email — copiás el prompt y refinás en 2 min.</p>
+    </div>
+
+    <div class="card">
+      <h3>📋 Pasos (método COCO GO)</h3>
+      <ol>
+        <li><strong>Definí tu estilo de marca visual</strong> (10 min): 3 colores principales, vibe (minimal / vibrante / elegante), elementos recurrentes. Guardalo en "04-imagenes/estilo-marca.txt".</li>
+        <li><strong>Usá el prompt base con esta estructura</strong>: Sujeto + Detalles + Estilo + Iluminación + Composición + Calidad + Formato.</li>
+        <li>Generá para diferentes formatos: carrusel (cuadrado), story (9:16), post, mockup de servicio, banner.</li>
+        <li><strong>Iterá con feedback específico</strong>: "más limpio, tonos más cálidos, agrega mi logo en esquina inferior derecha, versión cuadrada y vertical".</li>
+        <li>Guardá cada imagen con nombre claro + el prompt usado.</li>
+        <li>Usá al menos 2 en publicación o email real esta semana.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>🖼️ Prompt base (estructura recomendada)</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · imagen base</span><button class="copy">Copiar</button></div>
+        <pre>Generá una imagen de [SUJETO DETALLADO], estilo [ESTILO O REFERENCIA DE MARCA], iluminación [LUZ], composición [COMPOSICIÓN], paleta de colores [COLORES]. Formato [cuadrado 1:1 / vertical 9:16 / horizontal 16:9], alta calidad y bordes limpios. Si la voy a usar con texto encima, dejá espacio libre arriba o abajo.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🔄 Prompt para iterar</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · iteración</span><button class="copy">Copiar</button></div>
+        <pre>Tomá la imagen anterior y refinála exactamente así: [cambio específico 1], [cambio específico 2], manteniendo todo lo demás idéntico. Mantén consistencia total de marca.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>⚠️ Errores comunes</h3>
+      <p>Generar sin estilo de marca definido → todo sale diferente y tu marca se ve inconsistente. Olvidar revisar aspect ratio, resolución y consistencia antes de publicar. Las imágenes generadas por IA pueden requerir atribución o revisión legal en algunos casos comerciales.</p>
+    </div>
+
+    <div class="card">
+      <h3>✓ Listo cuando…</h3>
+      <p>Tenés el archivo 04-imagenes con estilo de marca definido + al menos 8 imágenes coherentes + 2 usadas en publicaciones reales esta semana.</p>
+    </div>
+
+    <span class="entregable">📦 Entregable · 04-imagenes — biblioteca visual de marca</span>
+  </section>
+
+  <!-- ═══ MÓDULO 5 ═══ -->
+  <section class="panel" id="p-m5">
+    <div class="sec-head"><span class="numchip">05</span><h2>Emails y mensajes que venden</h2></div>
+    <p class="sec-sub">Atacás donde está la plata: la velocidad de respuesta. Un lead que espera 4 horas enfría; uno que recibe presupuesto claro en 10 minutos avanza.</p>
+
+    <div class="fastlane"><span class="bolt">⚡</span><div><span class="label">Carril rápido</span><p>Generá las <strong>5 plantillas de venta</strong> con el prompt del módulo y enviá 1 mensaje real hoy.</p></div></div>
+
+    <div class="card">
+      <h3>✅ Tu solución al terminar</h3>
+      <p><strong>Problema:</strong> Respondés tarde o improvisás — el lead se enfría y la venta se pierde.</p>
+      <p><strong>Te llevás:</strong> <code>05-mensajes-venta</code> — 5 plantillas (frío, seguimiento, caro, propuesta, cierre) + 1 mensaje <strong>ya enviado</strong> hoy.</p>
+      <p><strong>Lo usás cuando:</strong> llegue un WhatsApp o email comercial — abrís la plantilla, completás los [corchetes], enviás en 2 minutos.</p>
+    </div>
+
+    <div class="card">
+      <h3>📋 Pasos</h3>
+      <ol>
+        <li>Listá los <strong>5 mensajes</strong> que más repetís (presupuesto, seguimiento, objeción precio, primer contacto, cierre).</li>
+        <li>Generá cada plantilla con el prompt base, usando tu oferta y precios reales.</li>
+        <li>Dejá campos <strong>[ENTRE CORCHETES]</strong> para completar rápido antes de enviar (nombre, servicio, precio, fecha).</li>
+        <li>Leé cada plantilla en voz alta — si no la dirías en persona, pedí que suene más natural.</li>
+        <li>Guardá las 5 plantillas en una nota llamada <strong>"Mensajes venta"</strong>.</li>
+        <li>Enviá <strong>1 mensaje real hoy</strong> y anotá qué pasó.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>💬 Pack 5 plantillas de venta</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · plantillas de venta</span><button class="copy">Copiar</button></div>
+        <pre>Mi negocio: [NOMBRE]. Vendo: [OFERTA]. Precio desde: [X].
+Con mi voz de marca, creá 5 plantillas cortas:
+1) WhatsApp primer contacto (lead frío)
+2) Email seguimiento 48h sin respuesta
+3) Respuesta a "está caro"
+4) Propuesta comercial (3 párrafos)
+5) Cierre amable ("¿avanzamos?")
+Cada una máx. 120 palabras (WhatsApp máx. 4 líneas). Dejá [CAMPOS] editables.
+Español latinoamericano. Listas para enviar hoy — si falta un dato mío, pedímelo, no inventes precios.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>⚠️ Error común</h3>
+      <p>Plantillas demasiado largas. En WhatsApp, menos de 5 líneas funciona mejor. En email, máximo 150 palabras. También: no personalizar el [NOMBRE] — un mensaje con "Hola [NOMBRE]" sin editar destruye la confianza.</p>
+    </div>
+
+    <div class="card">
+      <h3>✓ Listo cuando…</h3>
+      <p>Enviaste <strong>1 mensaje real hoy</strong> en menos de 2 minutos (plantilla + corchetes) y anotaste la respuesta del cliente.</p>
+    </div>
+
+    <span class="entregable">📦 Entregable · 05-mensajes-venta — 5 plantillas + registro</span>
+  </section>
+
+  <!-- ═══ MÓDULO 6 ═══ -->
+  <section class="panel" id="p-m6">
+    <div class="sec-head"><span class="numchip">06</span><h2>Automatizá tareas repetitivas</h2></div>
+    <p class="sec-sub">Convertís lo repetitivo en rutina. No necesitás automatización cara: necesitás 3 procesos documentados que cualquier día ejecutás en minutos.</p>
+
+    <div class="fastlane"><span class="bolt">⚡</span><div><span class="label">Carril rápido</span><p>Elegí tu tarea más repetida, armala con la plantilla <strong>Flujo repetitivo</strong> y usala una vez hoy.</p></div></div>
+
+    <div class="card">
+      <h3>✅ Tu solución al terminar</h3>
+      <p><strong>Problema:</strong> Hacés las mismas tareas una y otra vez — FAQs, presupuestos, descripciones — y te comen la semana.</p>
+      <p><strong>Te llevás:</strong> <code>06-flujos</code> — 3 procesos con prompt, ejemplo y <strong>minutos ahorrados</strong> en papel.</p>
+      <p><strong>Lo usás cuando:</strong> repitas esa tarea — pegás datos, corrés el flujo, copiás el resultado.</p>
+    </div>
+
+    <div class="card">
+      <h3>🎯 Selector de tareas (empezá acá)</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · selector</span><button class="copy">Copiar</button></div>
+        <pre>Listá 8 tareas repetitivas de mi negocio: [NEGOCIO].
+Por cada una indicá: frecuencia (diaria/semanal/mensual), minutos que me lleva hoy, y si genera plata directa (sí/no).
+Recomendá las 3 mejores para documentar como flujos IA esta semana.
+Criterio: alta frecuencia + alto dolor de tiempo + resultado copiable (mensaje, presupuesto, checklist).</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📋 Pasos</h3>
+      <ol>
+        <li>Usá el <strong>selector de tareas</strong> y elegí las 3 que ChatGPT recomiende.</li>
+        <li>Para cada tarea, definí: qué datos le das (entrada) y qué necesitás recibir (salida).</li>
+        <li>Armá un prompt por tarea usando la plantilla de flujo repetitivo.</li>
+        <li>Probá cada flujo con un caso real de esta semana y ajustá lo que no funcione.</li>
+        <li>Usá al menos <strong>1 flujo hoy</strong> en trabajo real y cronometrá cuánto tardaste vs. antes.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>⚙️ Plantilla — Flujo repetitivo</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · flujo</span><button class="copy">Copiar</button></div>
+        <pre>Actuá como mi asistente de [ÁREA: ventas/operaciones/soporte].
+Tarea: [DESCRIBÍ LA TAREA EN 1 LÍNEA].
+Entrada que te voy a dar: [EJ: mensaje del cliente / datos del pedido].
+Salida que necesito: [EJ: respuesta lista para copiar / tabla / checklist].
+Reglas: español latinoamericano, tono [TU TONO], máx. [X] palabras.
+Acá va la entrada:
+[PEGÁ DATOS]</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>⚠️ Error común</h3>
+      <p>Crear flujos para tareas que hacés una vez al mes. Priorizá lo que repetís <strong>semanalmente</strong>. También: prompts demasiado vagos — "respondé este mensaje" sin indicar tono, extensión ni formato da resultados inconsistentes.</p>
+    </div>
+
+    <div class="card">
+      <h3>✓ Listo cuando…</h3>
+      <p>Los 3 flujos los probaste con datos reales, usaste <strong>al menos 1 en trabajo hoy</strong>, y el ahorro de minutos es creíble (ej: 15 min → 4 min). Si el ahorro es 0, el flujo no sirve — reescribilo.</p>
+    </div>
+
+    <span class="entregable">📦 Entregable · 06-flujos — 3 atajos operativos probados</span>
+  </section>
+
+  <!-- ═══ MÓDULO 7 ═══ -->
+  <section class="panel" id="p-m7">
+    <div class="sec-head"><span class="numchip">07</span><h2>Investigación y decisiones con IA</h2></div>
+    <p class="sec-sub">Evitás el error caro: lanzar algo que nadie pidió. ChatGPT no reemplaza al mercado — te ayuda a pensar en orden y salir a validar con preguntas concretas.</p>
+
+    <div class="fastlane"><span class="bolt">⚡</span><div><span class="label">Carril rápido</span><p>Corré la <strong>Ficha de análisis</strong> con tu idea y mandá las preguntas de validación a 3 personas.</p></div></div>
+
+    <div class="card">
+      <h3>✅ Tu solución al terminar</h3>
+      <p><strong>Problema:</strong> Tenés una idea en la cabeza pero no sabés si vale invertir tiempo y plata.</p>
+      <p><strong>Te llevás:</strong> <code>07-ficha-idea</code> — análisis + 3 charlas reales + línea <strong>Avanzar / Pivotar / Descartar</strong> con razón.</p>
+      <p><strong>Lo usás cuando:</strong> quieras lanzar algo nuevo — no arrancás a ciegas.</p>
+    </div>
+
+    <div class="card">
+      <h3>📋 Pasos</h3>
+      <ol>
+        <li>Elegí <strong>1 idea</strong> que tengas en la cabeza (nuevo servicio, pack, audiencia, producto digital).</li>
+        <li>Corré el prompt <strong>Ficha de análisis</strong> con todos los datos que tengas.</li>
+        <li>Leé el resultado con ojo crítico — subrayá lo que suena genérico o poco aplicable a tu mercado.</li>
+        <li>Completá la <strong>validación mínima: 3 conversaciones</strong> con personas de tu audiencia por WhatsApp o DM.</li>
+        <li>Tomá la decisión: <strong>avanzar / pivotar / descartar</strong> — anotala en 1 línea con la razón.</li>
+        <li>Si decidís avanzar, anotá la <strong>próxima acción con fecha</strong>. Sin fecha, la idea se enfría.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>📊 Ficha de análisis de idea</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · ficha de idea</span><button class="copy">Copiar</button></div>
+        <pre>Idea de negocio: [DESCRIPCIÓN].
+Audiencia: [QUIÉN]. País/región: [LATAM/PAÍS].
+Completá esta ficha:
+1) Problema que resuelve
+2) 3 competidores o alternativas
+3) Propuesta de valor en 1 frase
+4) Precio sugerido y por qué
+5) 3 riesgos
+6) 3 formas de validar en 7 días sin gastar plata
+7) Veredicto: semáforo verde/amarillo/rojo con argumento
+Sé directo. Si faltan datos, decime qué preguntarle al mercado.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🔍 Validación rápida con clientes</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · validación</span><button class="copy">Copiar</button></div>
+        <pre>Necesito validar esta idea con clientes reales: [IDEA].
+Escribí 5 preguntas que puedo hacer por WhatsApp o Instagram DM para entender si pagarían por esto.
+Que sean conversacionales, no una encuesta formal. Máx. 2 líneas cada pregunta.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>⚠️ Error común</h3>
+      <p>Creer que ChatGPT conoce tu mercado local. Usalo para estructurar preguntas y ver ángulos que no consideraste; validá siempre con clientes reales. También: analizar 5 ideas a la vez — mejor una bien hecha que cinco superficiales.</p>
+    </div>
+
+    <div class="card">
+      <h3>✓ Listo cuando…</h3>
+      <p>Tenés <strong>3 conversaciones registradas</strong> (qué dijeron, no resumen vago) y una línea <strong>"Avanzar / Pivotar / Descartar porque…"</strong> con la siguiente acción fechada si avanzás.</p>
+    </div>
+
+    <span class="entregable">📦 Entregable · 07-ficha-idea — decisión con datos, no con corazonada</span>
+  </section>
+
+  <!-- ═══ MÓDULO 8 ═══ -->
+  <section class="panel" id="p-m8">
+    <div class="sec-head"><span class="numchip">08</span><h2>Tu sistema permanente</h2></div>
+    <p class="sec-sub">Dejás de "usar IA" y pasás a operar con un sistema. El manual que generás hoy es lo que abrís cada lunes — no esta guía entera.</p>
+
+    <div class="fastlane"><span class="bolt">⚡</span><div><span class="label">Carril rápido</span><p>Pegá tus archivos en el prompt <strong>Armar manual desde archivos</strong> y agendá 30 min cada lunes.</p></div></div>
+
+    <div class="card">
+      <h3>✅ Tu solución al terminar — el producto final</h3>
+      <p><strong>Problema:</strong> En 2 semanas volvés a improvisar — sin rutina, la IA se convierte en juguete.</p>
+      <p><strong>Te llevás:</strong> <code>08-manual-operacion</code> + <strong>lunes agendado</strong> + plan de 3 acciones. Es el documento que reemplaza esta guía.</p>
+      <p><strong>Lo usás cuando:</strong> cada lunes 30 min — abrís el manual, corrés la rutina, seguís operando.</p>
+    </div>
+
+    <div class="card">
+      <h3>📁 Tu carpeta final — verificá antes de generar el manual</h3>
+      <pre class="kit-tree">Sistema IA/
+├── 01-perfil          ← Módulo 1
+├── 02-voz-de-marca    ← Módulo 2
+├── 03-calendario      ← Módulo 3
+├── 04-imagenes        ← Módulo 4
+├── 05-mensajes-venta  ← Módulo 5
+├── 06-flujos          ← Módulo 6
+├── 07-ficha-idea      ← Módulo 7 (opcional)
+└── 08-manual-operacion ← lo generás hoy</pre>
+    </div>
+
+    <div class="card">
+      <h3>📘 Armar manual desde tus archivos (usá este primero)</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · armar manual desde archivos</span><button class="copy">Copiar</button></div>
+        <pre>Sos mi consultor de operaciones. Armá mi Manual de Operación con IA usando SOLO el contenido que pego abajo — no inventes datos.
+
+=== 01-PERFIL ===
+[PEGÁ]
+=== 02-VOZ DE MARCA ===
+[PEGÁ]
+=== 03-CALENDARIO ===
+[PEGÁ resumen o último calendario]
+=== 04-IMAGENES (estilo visual) ===
+[PEGÁ tu prompt base de imagen o describí tu estilo]
+=== 05-MENSAJES VENTA ===
+[PEGÁ las 5 plantillas]
+=== 06-FLUJOS ===
+[PEGÁ los 3 flujos]
+=== 07-FICHA IDEA (si aplica) ===
+[PEGÁ o escribí "no aplica"]
+
+Salida: documento listo para Google Docs/Notas con las 7 secciones del manual. Si falta info, listala al final como "completar antes del lunes".</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📆 Checklist — Lunes con IA (30 min)</h3>
+      <div class="prompt">
+        <div class="top"><span>checklist semanal</span><button class="copy">Copiar</button></div>
+        <pre>□ 10 min — Generar calendario de contenido de la semana
+□ 10 min — Revisar y actualizar 1 plantilla de venta
+□ 5 min — Correr 1 flujo repetitivo (FAQ / presupuesto)
+□ 5 min — Guardar el mejor prompt de la semana en "Favoritos"</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🗓️ Plan — Próximos 7 días</h3>
+      <div class="prompt">
+        <div class="top"><span>prompt · próximos 7 días</span><button class="copy">Copiar</button></div>
+        <pre>Basándote en mi negocio y en lo que armé esta semana, proponé 3 acciones concretas para los próximos 7 días:
+- 1 de ventas (mensaje o seguimiento real)
+- 1 de contenido (publicar algo del calendario)
+- 1 de operaciones (usar un flujo repetitivo)
+Por cada acción: qué hago, cuándo (día), cuánto tardo, qué prompt uso.
+Máx. 5 líneas por acción. Directo.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>⚠️ Error común</h3>
+      <p>Terminar la guía y no agendar la rutina semanal. Sin el "Lunes con IA", en 2 semanas volvés a improvisar. También: buscar más herramientas en vez de dominar lo que ya tenés.</p>
+    </div>
+
+    <div class="card">
+      <h3>✓ Listo cuando…</h3>
+      <p>El manual pasa el checklist (resumen de negocio con datos reales, voz de marca, 3 flujos, 5 plantillas, rutina "Lunes con IA", 1 métrica, 3 acciones fechadas), el <strong>lunes está agendado</strong> en el calendario, y podés explicar tu rutina semanal con IA en 30 segundos.</p>
+    </div>
+
+    <span class="entregable">📦 Entregable · 08-manual-operacion — tu kit completo</span>
+  </section>
+
+  <!-- ═══ APLICACIONES ═══ -->
+  <section class="panel" id="p-apps">
+    <div class="sec-head"><span class="numchip" style="font-size:1.1rem">↗</span><h2>Usos de GPT / OpenAI</h2></div>
+    <p class="sec-sub">Los modelos GPT sirven para texto, análisis, workflows e imágenes — todo por chat, sin instalar nada ni tocar código. Acá el panorama completo.</p>
+
+    <div class="app-grid">
+      <div class="app">
+        <div class="ic">📝</div>
+        <h4>Texto y Comunicación</h4>
+        <p>Generá mensajes, emails, posts y copys que suenan exactamente a vos.</p>
+        <ul>
+          <li><strong>Comunicaciones con clientes:</strong> WhatsApp de seguimiento, respuestas a consultas, presupuestos claros.</li>
+          <li><strong>Marketing y contenido:</strong> Posts, carruseles, guiones de reel y newsletters con hook + CTA concreto.</li>
+        </ul>
+      </div>
+      <div class="app">
+        <div class="ic">🖼️</div>
+        <h4>Generación de Imágenes</h4>
+        <p>Creás visuals profesionales de tu marca sin pagar diseñador ni usar fotos genéricas.</p>
+        <ul>
+          <li>Posts, carruseles, stories, mockups de producto, banners para emails.</li>
+          <li>Pedí siempre con tu estilo de marca + refiná iterando.</li>
+          <li>Ver <strong>Módulo 4</strong> para el desarrollo completo.</li>
+        </ul>
+      </div>
+      <div class="app">
+        <div class="ic">📊</div>
+        <h4>Análisis, Organización y Flujos</h4>
+        <p>Resumí datos, armá planes y convertí tareas repetitivas en procesos que corren solos.</p>
+        <ul>
+          <li><strong>Análisis de datos:</strong> Resumís planillas, comparás competidores, detectás qué funciona.</li>
+          <li><strong>Organización:</strong> Calendarios editoriales, checklists, SOPs y plantillas reutilizables.</li>
+          <li><strong>Automatizaciones:</strong> Flujos para Make/Zapier o asistente virtual.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:8px">
+      <h3>Fortalezas vs. Debilidades</h3>
+      <div class="fw-row">
+        <div class="fw-box fw-str">
+          <h4>✅ Fortalezas (lo que más rinde)</h4>
+          <ul>
+            <li>Iteración excelente: pedís cambios en lenguaje normal y entrega plantillas listas para copiar.</li>
+            <li>Imagen integrada: generás y refinás visuals para tu marca sin diseñador externo.</li>
+            <li>Versátil para no técnicos: un solo chat resuelve texto + imagen + análisis + organización.</li>
+            <li>Accesible: la versión gratis alcanza para toda la guía y funciona en celular o compu.</li>
+          </ul>
+        </div>
+        <div class="fw-box fw-weak">
+          <h4>⚠️ Debilidades (dónde estar atento)</h4>
+          <ul>
+            <li>Alucinaciones: inventa datos y estadísticas que suenan creíbles. <strong>Revisá siempre</strong> contra tu información real.</li>
+            <li>Necesita contexto específico de tu negocio + revisión humana. Sin eso sale genérico.</li>
+            <li>Imágenes rápidas pero chequeá consistencia de marca y resolución antes de publicar.</li>
+            <li>No es real-time: precios actuales, stock o noticias frescas requieren validación manual.</li>
+            <li>No reemplaza tu expertise del rubro: da patrones generales. Vos sabés qué le funciona a tus clientes.</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:14px;font-size:.86rem;color:var(--faint)">Basado en OpenAI Academy (Small Business 101/102 + guías de imágenes) + buenas prácticas de prompting + hábito COCO GO de revisión humana e iteración con datos reales.</p>
+    </div>
+  </section>
+
+  <!-- ═══ BONUS ═══ -->
+  <section class="panel" id="p-bonus">
+    <div class="sec-head"><span class="numchip" style="font-size:1.15rem">★</span><h2>Bonus · 15 prompts + medición</h2></div>
+    <p class="sec-sub">Biblioteca nacida de OpenAI Academy + mejores prácticas. Usala <strong>después</strong> de completar los módulos — con tu perfil y voz ya cargados. Prefijo recomendado: <em>"Con mi voz de marca y perfil de negocio cargados:"</em></p>
+
+    <div class="card">
+      <h3>💡 Cómo medir impacto real</h3>
+      <p>Probá 1 prompt por semana. Después de cada uso: 1) pegá output en tu entregable del módulo, 2) anotá métricas (minutos vs. manual, calidad 1-5, ¿generó lead/venta/ahorro?). Guardá los que funcionaron en <code>Prompts-Ganadores/</code> dentro de Sistema IA/.</p>
+    </div>
+
+    <p class="bonus-cat">Ventas</p>
+
+    <div class="card">
+      <h3>Seguimiento suave</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · ventas</span><button class="copy">Copiar</button></div>
+        <pre>Escribí seguimiento WhatsApp para [NOMBRE] que pidió info de [SERVICIO] hace 3 días. Sin presión, 3 líneas, CTA agendar llamada.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Objeción "lo pienso"</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · ventas</span><button class="copy">Copiar</button></div>
+        <pre>Respuesta a cliente que dice "lo pienso" sobre [OFERTA]. Empatía + 1 beneficio concreto + pregunta abierta. Máx. 80 palabras.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Presupuesto express</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · ventas</span><button class="copy">Copiar</button></div>
+        <pre>Armá presupuesto en bullet points para [SERVICIO] cliente [TIPO]. Incluí alcance, plazo, precio, forma de pago.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Reactivar cliente viejo</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · ventas</span><button class="copy">Copiar</button></div>
+        <pre>Email para cliente que no compra hace [X] meses. Tono cercano, novedad real, invitación a responder.</pre>
+      </div>
+    </div>
+
+    <p class="bonus-cat">Marketing</p>
+
+    <div class="card">
+      <h3>Headlines para anuncio</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · marketing</span><button class="copy">Copiar</button></div>
+        <pre>10 titulares para anuncio de [PRODUCTO] audiencia [X]. Máx. 8 palabras cada uno. Enfoque beneficio.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Email lanzamiento</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · marketing</span><button class="copy">Copiar</button></div>
+        <pre>Email anunciando [NOVEDAD]. Asunto + cuerpo 200 palabras + PS con urgencia suave.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Testimonio solicitado</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · marketing</span><button class="copy">Copiar</button></div>
+        <pre>Mensaje pidiendo testimonio a cliente feliz. 3 preguntas guía que pueda responder por WhatsApp en 2 min.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Promo fin de mes</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · marketing</span><button class="copy">Copiar</button></div>
+        <pre>Copy promo [X]% válida hasta [FECHA]. 3 versiones: Instagram, email, WhatsApp broadcast.</pre>
+      </div>
+    </div>
+
+    <p class="bonus-cat">Contenido</p>
+
+    <div class="card">
+      <h3>Hook viral</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · contenido</span><button class="copy">Copiar</button></div>
+        <pre>15 hooks para reel sobre [TEMA]. Primera frase debe generar curiosidad. Máx. 12 palabras cada uno.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Carrusel educativo</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · contenido</span><button class="copy">Copiar</button></div>
+        <pre>Estructura carrusel 7 slides: [TEMA]. Por slide: título + 2 líneas de texto. Slide 7 = CTA.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Guion reel 30 seg</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · contenido</span><button class="copy">Copiar</button></div>
+        <pre>Guion reel 30 seg enseñando [TIP]. Formato: problema → solución → CTA. Lenguaje hablado.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Calendario 30 días</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · contenido</span><button class="copy">Copiar</button></div>
+        <pre>Calendario contenido 30 días para [NEGOCIO] en [RED]. Solo títulos + formato + pilar. Tabla markdown.</pre>
+      </div>
+    </div>
+
+    <p class="bonus-cat">Operaciones</p>
+
+    <div class="card">
+      <h3>FAQ automático</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · operaciones</span><button class="copy">Copiar</button></div>
+        <pre>Generá 15 preguntas frecuentes de clientes de [NEGOCIO] con respuestas cortas listas para web/WhatsApp.</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Resumen de reunión</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · operaciones</span><button class="copy">Copiar</button></div>
+        <pre>Resumí esta reunión en: acuerdos, responsables, fechas, próximos pasos:
+[PEGÁ NOTAS]</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Checklist proceso</h3>
+      <div class="prompt">
+        <div class="top"><span>bonus · operaciones</span><button class="copy">Copiar</button></div>
+        <pre>Checklist paso a paso para entregar [SERVICIO] sin olvidar nada. Máx. 12 ítems accionables.</pre>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px">
+      <h3>⚠️ 10 errores que arruinan tus prompts</h3>
+      <ol>
+        <li>Prompt de 1 línea sin contexto de negocio</li>
+        <li>No definir tono ni audiencia</li>
+        <li>Pedir "todo" en un solo mensaje</li>
+        <li>Aceptar la primera respuesta sin iterar</li>
+        <li>No dar ejemplos de cómo escribís vos</li>
+        <li>Usar español de España si vendés en LATAM (o viceversa)</li>
+        <li>Olvidar el CTA en contenido y ventas</li>
+        <li>Confiar en datos de mercado sin validar</li>
+        <li>No guardar los prompts que funcionaron</li>
+        <li>Usar ChatGPT para decisiones legales o médicas</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══ VERIFICACIÓN ═══ -->
+  <section class="panel" id="p-verif">
+    <div class="sec-head"><span class="numchip" style="font-size:1.15rem">✓</span><h2>Verificación final</h2></div>
+    <p class="sec-sub">Un check por entregable. Si los tenés todos, armaste tu sistema.</p>
+
+    <div class="card">
+      <div class="check-list">
+        <div class="check"><span class="box">✓</span><p>01 · Perfil<small>ChatGPT responde con mi negocio sin que repita contexto.</small></p></div>
+        <div class="check"><span class="box">✓</span><p>02 · Voz de marca<small>Un post sale de mi cuenta y suena a mí, no a una agencia.</small></p></div>
+        <div class="check"><span class="box">✓</span><p>03 · Calendario<small>Tengo la semana de contenido sin pedir ideas nuevas a ChatGPT.</small></p></div>
+        <div class="check"><span class="box">✓</span><p>04 · Imágenes<small>Tengo imágenes con mi estilo de marca listas para usar.</small></p></div>
+        <div class="check"><span class="box">✓</span><p>05 · Mensajes de venta<small>Envío presupuesto o seguimiento en 2 minutos con una plantilla.</small></p></div>
+        <div class="check"><span class="box">✓</span><p>06 · Flujos<small>Corro 3 tareas repetitivas con un prompt guardado — sin pensar desde cero.</small></p></div>
+        <div class="check"><span class="box">✓</span><p>07 · Ficha de idea<small>Sé si mi idea avanza, pivota o se descarta — con evidencia de clientes.</small></p></div>
+        <div class="check"><span class="box">✓</span><p>08 · Manual de operación<small>Sé qué hacer cada lunes en 30 min sin abrir esta guía.</small></p></div>
+      </div>
+    </div>
+
+    <div class="next">
+      <div class="kicker">Cuando termines esto…</div>
+      <h3>Seguí con <span class="c">Claude para tu negocio</span></h3>
+      <p>Ya entendiste ChatGPT. El siguiente paso natural: el modelo que mejor escribe y razona en textos largos. Propuestas, informes, estrategia con documentos extensos — mismo método COCO GO, otra herramienta.</p>
+      <a class="go" href="#">Ver el curso de Claude →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <img src="assets/logo-coco-go.svg" class="foot-logo" alt="COCO GO">
+  <p>Soporte: <a href="mailto:cocogo.hola@gmail.com">cocogo.hola@gmail.com</a> (respondemos en 48 h hábiles)</p>
+  <p>© COCO GO 2026. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+/* fondo de red animado */
+(function(){
+  var c=document.getElementById('bg'); if(!c) return;
+  var ctx=c.getContext('2d'), dpr=Math.min(window.devicePixelRatio||1,2);
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var RGB=(getComputedStyle(document.documentElement).getPropertyValue('--theme-rgb').trim())||'16,163,127';
+  var W,H,pts,raf;
+  function resize(){W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    var n=Math.min(90,Math.max(30,Math.floor(W*H/16000)));pts=[];for(var i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18});}
+  function frame(move){ctx.clearRect(0,0,W,H);var i,j,a,b,dx,dy,d,o;
+    if(move)for(i=0;i<pts.length;i++){a=pts[i];a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>W)a.vx*=-1;if(a.y<0||a.y>H)a.vy*=-1;}
+    for(i=0;i<pts.length;i++)for(j=i+1;j<pts.length;j++){a=pts[i];b=pts[j];dx=a.x-b.x;dy=a.y-b.y;d=dx*dx+dy*dy;
+      if(d<19000){o=(1-d/19000)*.22;ctx.strokeStyle='rgba('+RGB+','+o.toFixed(3)+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
+    for(i=0;i<pts.length;i++){a=pts[i];ctx.fillStyle='rgba('+RGB+',.55)';ctx.beginPath();ctx.arc(a.x,a.y,1.5,0,6.283);ctx.fill();}}
+  function loop(){frame(true);raf=requestAnimationFrame(loop);}
+  resize();window.addEventListener('resize',function(){cancelAnimationFrame(raf);resize();reduce?frame(false):loop();});
+  reduce?frame(false):loop();
+})();
+
+/* glosario acordeón: una abierta a la vez */
+(function(){
+  var terms=document.querySelectorAll('.gterm');
+  terms.forEach(function(b){
+    b.addEventListener('click',function(){
+      var open=b.classList.contains('open');
+      terms.forEach(function(o){o.classList.remove('open');o.nextElementSibling.style.maxHeight=null;});
+      if(!open){b.classList.add('open');var d=b.nextElementSibling;d.style.maxHeight=d.scrollHeight+'px';}
+    });
+  });
+  var q=document.getElementById('gloss-q');
+  if(q)q.addEventListener('input',function(){
+    var v=q.value.toLowerCase();
+    document.querySelectorAll('#gloss-list .gitem').forEach(function(it){
+      it.style.display=it.querySelector('.gterm').textContent.toLowerCase().indexOf(v)>-1?'':'none';
+    });
+  });
+})();
+
+/* scroll al tope al cambiar pestaña */
+document.querySelectorAll('input[name="coco-tab"]').forEach(function(r){
+  r.addEventListener('change',function(){window.scrollTo({top:0,behavior:'instant'});});
+});
+
+/* botones copiar con clipboard API */
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var pre=btn.closest('.prompt').querySelector('pre');
+    if(!pre) return;
+    var text=pre.textContent.trim();
+    function done(){btn.textContent='✓ Copiado';setTimeout(function(){btn.textContent='Copiar';},1500);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(function(){fallback(text,done);});
+    } else { fallback(text,done); }
+  });
+});
+function fallback(text,cb){
+  var ta=document.createElement('textarea');
+  ta.value=text;ta.style.cssText='position:fixed;left:-9999px;top:0;opacity:0';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');cb();}catch(e){}
+  document.body.removeChild(ta);
+}
+</script>
+</body>
+</html>
