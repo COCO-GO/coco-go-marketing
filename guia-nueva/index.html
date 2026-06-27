@@ -198,6 +198,11 @@ footer p{margin:4px auto;max-width:64ch}
 footer a{color:var(--theme-light);text-decoration:none}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.panel{animation:none!important}.eyebrow .pulse::after{animation:none}}
+.devcols{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+.devcol{flex:1 1 240px;background:rgba(var(--theme-rgb),.05);border:1px solid rgba(var(--theme-rgb),.18);border-radius:12px;padding:14px 16px}
+.devcol h4{margin:0 0 10px;font-size:.95rem;display:flex;align-items:center;gap:7px}
+.devcol ul{margin:0;padding-left:16px}
+.devcol li{margin:6px 0;font-size:.9rem;color:var(--faint);line-height:1.5}
 </style>
 </head>
 <body>
@@ -386,6 +391,25 @@ footer a{color:var(--theme-light);text-decoration:none}
   <section class="panel" id="p-m1">
     <div class="sec-head"><span class="numchip">01</span><h2>Configuración en 20 minutos</h2></div>
     <p class="sec-sub">El día que separa "uso ChatGPT a veces" de "tengo un asistente que conoce mi negocio". Sin este paso, todo lo demás suena genérico.</p>
+
+    <div class="card" style="border-left:3px solid var(--theme-light)">
+      <h3>🧠 ¿Qué es ChatGPT y para qué te sirve?</h3>
+      <p>ChatGPT es un programa de inteligencia artificial creado por OpenAI que entendés y usás conversando: le escribís en español, como si fuera un chat con un asistente, y te responde en segundos. No instalás nada especial. No necesitás saber programar.</p>
+      <p>Por dentro, "aprendió" leyendo miles de millones de textos — libros, artículos, conversaciones. Eso le permite escribir, resumir, organizar, analizar y proponer. Para tu negocio, significa tener un colaborador disponible las 24 horas que sabe redactar, armar calendarios, responder consultas y ayudarte a tomar decisiones.</p>
+      <p><strong>Por qué este módulo es el más importante:</strong> sin configurarlo, ChatGPT no te conoce. Cada conversación nueva arranca de cero: tenés que explicarle tu negocio, tono y cliente una y otra vez. Una vez que lo configurás bien, recuerda quién sos en cada chat nuevo y las respuestas salen ajustadas a tu realidad desde el primer mensaje.</p>
+      <div class="devcols">
+        <div class="devcol"><h4>📱 Desde el celular</h4><ul>
+          <li>Descargá la app oficial de ChatGPT (OpenAI, logo blanco sobre negro) desde App Store o Google Play. Creá cuenta con email o Google.</li>
+          <li>Las instrucciones personalizadas se configuran en: Perfil → Configuración → Personalización.</li>
+          <li>Plan gratuito: funciona para toda la guía.</li>
+        </ul></div>
+        <div class="devcol"><h4>💻 Desde la computadora</h4><ul>
+          <li>Abrí chatgpt.com en Chrome, Firefox o Safari. Creá cuenta en menos de 2 minutos.</li>
+          <li>Mismo menú, más fácil de leer y editar texto largo. Recomendado para esta configuración inicial.</li>
+          <li>Plan Plus (USD 20/mes): modelos más potentes. No lo necesitás para empezar.</li>
+        </ul></div>
+      </div>
+    </div>
 
     <div class="card" style="border-left:3px solid var(--theme-light)">
       <h3>📚 Qué vas a aprender — cómo funciona — cómo aplicarlo</h3>
