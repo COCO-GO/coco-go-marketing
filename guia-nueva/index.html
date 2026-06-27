@@ -48,6 +48,7 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opa
 .pill{flex-shrink:0;font-size:.86rem;font-weight:600;color:var(--muted);padding:9px 16px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.025);cursor:pointer;white-space:nowrap;transition:all .22s;user-select:none}
 .pill:hover{color:var(--text);border-color:var(--border-strong)}
 
+main.wrap{padding-top:120px}
 /* panel visibility (13 tabs) */
 .panel{display:none;padding:34px 0 40px}
 #t-inicio:checked~main #p-inicio,
@@ -133,6 +134,7 @@ h1 .grad{background:linear-gradient(105deg,var(--theme-light),var(--theme) 55%,v
 .copy:hover{background:rgba(var(--theme-rgb),.2)}
 .prompt pre{font-family:var(--mono);font-size:.85rem;line-height:1.65;color:#CBD7EC;padding:16px;white-space:pre-wrap;margin:0}
 .entregable{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:.84rem;font-weight:600;color:var(--theme-light);padding:7px 13px;border-radius:999px;border:1px dashed rgba(var(--theme-rgb),.4);background:rgba(var(--theme-rgb),.05)}
+strong.field{background:rgba(var(--theme-rgb),.14);color:var(--theme-light);font-style:italic;font-weight:600;padding:1px 5px;border-radius:4px;font-family:var(--body)}
 
 /* kit tree */
 .kit-tree{font-family:var(--mono);font-size:.82rem;background:var(--ink);border:1px solid var(--border);border-radius:10px;padding:14px;color:#CBD7EC;white-space:pre;overflow-x:auto;margin:10px 0}
@@ -191,7 +193,7 @@ h1 .grad{background:linear-gradient(105deg,var(--theme-light),var(--theme) 55%,v
 .next .go:hover{transform:translateX(3px);border-color:var(--coral);color:var(--coral)}
 
 footer{text-align:center;padding:40px 20px 54px;color:var(--faint);font-size:.86rem;border-top:1px solid var(--border);margin-top:30px}
-.foot-logo{width:150px;height:auto;margin-bottom:14px;opacity:.96}
+.foot-logo{width:180px;height:auto;margin-bottom:14px;opacity:.96}
 footer p{margin:4px auto;max-width:64ch}
 footer a{color:var(--theme-light);text-decoration:none}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
