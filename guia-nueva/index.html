@@ -34,15 +34,15 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opa
 .tab{position:absolute;opacity:0;pointer-events:none}
 
 /* brand bar */
-.brandbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);background:linear-gradient(180deg,rgba(10,14,26,.82),rgba(10,14,26,.5));border-bottom:1px solid var(--border)}
+.brandbar{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--ink);border-bottom:1px solid var(--border)}
 .brandbar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
 .brand{display:flex;align-items:center}
-.brand-logo{height:30px;width:auto;display:block}
+.brand-logo{height:36px;width:auto;display:block}
 .theme-chip{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:.78rem;color:var(--muted);padding:6px 11px;border:1px solid var(--border-strong);border-radius:999px;background:rgba(var(--theme-rgb),.07)}
 .theme-chip .dot{width:8px;height:8px;border-radius:50%;background:var(--theme-light);box-shadow:0 0 10px 1px var(--theme-light)}
 
 /* nav */
-.modnav{position:sticky;top:58px;z-index:40;padding:12px 0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(10,14,26,.78),rgba(10,14,26,.35))}
+.modnav{position:fixed;top:58px;left:0;right:0;z-index:40;padding:12px 0;background:var(--ink);border-bottom:1px solid var(--border)}
 .modnav .scroll{display:flex;gap:9px;overflow-x:auto;scrollbar-width:none}
 .modnav .scroll::-webkit-scrollbar{display:none}
 .pill{flex-shrink:0;font-size:.86rem;font-weight:600;color:var(--muted);padding:9px 16px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.025);cursor:pointer;white-space:nowrap;transition:all .22s;user-select:none}
