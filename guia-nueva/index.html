@@ -48,7 +48,7 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opa
 .pill{flex-shrink:0;font-size:.86rem;font-weight:600;color:var(--muted);padding:9px 16px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.025);cursor:pointer;white-space:nowrap;transition:all .22s;user-select:none}
 .pill:hover{color:var(--text);border-color:var(--border-strong)}
 
-main.wrap{padding-top:120px}
+main.wrap{padding-top:158px}
 /* panel visibility (13 tabs) */
 .panel{display:none;padding:34px 0 40px}
 #t-inicio:checked~main #p-inicio,
@@ -254,7 +254,12 @@ footer a{color:var(--theme-light);text-decoration:none}
 </header>
 
 <nav class="modnav">
-  <div class="wrap"><div class="scroll">
+  <div class="wrap">
+    <div class="progwrap" role="progressbar" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" aria-label="Progreso del curso">
+      <div class="progtrack"><div class="progfill"></div></div>
+      <span class="proglabel">0/8</span>
+    </div>
+    <div class="scroll">
     <label class="pill p-inicio" for="t-inicio">Inicio</label>
     <label class="pill p-apps" for="t-apps">Aplicaciones</label>
     <label class="pill p-gloss" for="t-gloss">Glosario</label>
@@ -1593,7 +1598,7 @@ function fallback(text,cb){
     var pct=Math.round(done.length/TOTAL*100);
     if(fill)fill.style.width=pct+'%';
     if(label)label.textContent=done.length+'/'+TOTAL;
-    if(pwrap)pwrap.classList.toggle('complete',done.length>=TOTAL);
+    if(pwrap){pwrap.classList.toggle('complete',done.length>=TOTAL);pwrap.setAttribute('aria-valuenow',done.length);}
   }
   inputs.forEach(function(inp){
     inp.addEventListener('change',function(){
