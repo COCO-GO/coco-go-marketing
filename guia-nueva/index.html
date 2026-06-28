@@ -182,6 +182,23 @@ strong.field{background:rgba(var(--theme-rgb),.14);color:var(--theme-light);font
 .check .box{flex-shrink:0;width:24px;height:24px;border-radius:7px;border:1.5px solid var(--border-strong);display:grid;place-items:center;color:var(--theme-light);font-size:.9rem}
 .check p{font-size:.98rem;color:var(--text);margin:0}
 .check p small{display:block;color:var(--faint);font-size:.85rem}
+/* B6 — progreso */
+.check .box{transition:background .2s,border-color .2s,color .2s}
+.check:not(.done) .box{color:transparent;border-color:var(--border-strong);background:transparent}
+.check.done .box{color:var(--theme-light);border-color:rgba(var(--theme-rgb),.6);background:rgba(var(--theme-rgb),.14)}
+.modcheck{display:flex;align-items:center;gap:11px;margin-top:18px;padding:14px 18px;border:1px solid var(--border);border-radius:12px;background:rgba(var(--theme-rgb),.04);cursor:pointer;user-select:none;font-size:.95rem;font-weight:600;color:var(--text);transition:border-color .2s,background .2s}
+.modcheck:hover{border-color:rgba(var(--theme-rgb),.45)}
+.modcheck input{appearance:none;-webkit-appearance:none;margin:0;flex-shrink:0;width:24px;height:24px;border-radius:7px;border:1.5px solid var(--border-strong);display:grid;place-items:center;cursor:pointer;transition:background .2s,border-color .2s}
+.modcheck input::before{content:"✓";font-size:.9rem;font-weight:700;color:#fff;opacity:0;transition:opacity .15s}
+.modcheck input:checked{background:var(--theme);border-color:var(--theme)}
+.modcheck input:checked::before{opacity:1}
+.modcheck.done{border-color:rgba(var(--theme-rgb),.5);background:rgba(var(--theme-rgb),.08)}
+.progwrap{display:flex;align-items:center;gap:10px;padding:2px 0 8px}
+.progtrack{flex:1;height:6px;border-radius:999px;background:var(--border);overflow:hidden}
+.progfill{height:100%;width:0;border-radius:999px;background:var(--theme);transition:width .35s ease}
+.proglabel{font-size:.74rem;font-weight:700;color:var(--faint);white-space:nowrap;letter-spacing:.02em}
+.progwrap.complete .progfill{background:var(--theme-light)}
+.progwrap.complete .proglabel{color:var(--theme-light)}
 
 /* cross-sell */
 .next{margin-top:26px;background:radial-gradient(120% 140% at 100% 0%, rgba(var(--coral-rgb),.14), transparent 55%),linear-gradient(165deg,var(--surface),var(--surface-2));border:1px solid var(--border-strong);border-radius:20px;padding:28px;position:relative;overflow:hidden}
@@ -504,6 +521,11 @@ No uses frases vacías como "en el mundo actual" o "es importante destacar".</pr
 
     <span class="entregable">📦 Entregable · 01-perfil — asistente configurado</span>
 
+    <label class="modcheck" data-mod="1">
+      <input type="checkbox" data-mod="1" aria-label="Completé el módulo 1">
+      <span>Completé el módulo 1 · Configuración</span>
+    </label>
+
     <div class="card" style="margin-top:20px;text-align:center;border-style:dashed">
       <p style="color:var(--faint);font-size:.9rem">¿Te sirvió este módulo o viste algo para mejorar? Contanos por Instagram —<br>
       <a href="https://instagram.com/cocogo" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px;fill:currentColor;vertical-align:-2px;margin-right:3px"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 3.68A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84ZM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4Zm6.41-10.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44Z"/></svg>@cocogo →</a></p>
@@ -601,6 +623,11 @@ Sin emojis excesivos.</pre>
 
     <span class="entregable">📦 Entregable · 02-voz-de-marca — identidad escrita</span>
 
+    <label class="modcheck" data-mod="2">
+      <input type="checkbox" data-mod="2" aria-label="Completé el módulo 2">
+      <span>Completé el módulo 2 · Voz de marca</span>
+    </label>
+
     <div class="card" style="margin-top:20px;text-align:center;border-style:dashed">
       <p style="color:var(--faint);font-size:.9rem">¿Te sirvió este módulo o viste algo para mejorar? Contanos por Instagram —<br>
       <a href="https://instagram.com/cocogo" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px;fill:currentColor;vertical-align:-2px;margin-right:3px"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 3.68A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84ZM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4Zm6.41-10.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44Z"/></svg>@cocogo →</a></p>
@@ -688,6 +715,11 @@ Lenguaje hablado, como si le explicaras a un amigo.</pre>
 
     <span class="entregable">📦 Entregable · 03-calendario-[fecha] — semana de contenido resuelta</span>
 
+    <label class="modcheck" data-mod="3">
+      <input type="checkbox" data-mod="3" aria-label="Completé el módulo 3">
+      <span>Completé el módulo 3 · Contenido</span>
+    </label>
+
     <div class="card" style="margin-top:20px;text-align:center;border-style:dashed">
       <p style="color:var(--faint);font-size:.9rem">¿Te sirvió este módulo o viste algo para mejorar? Contanos por Instagram —<br>
       <a href="https://instagram.com/cocogo" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px;fill:currentColor;vertical-align:-2px;margin-right:3px"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 3.68A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84ZM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4Zm6.41-10.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44Z"/></svg>@cocogo →</a></p>
@@ -773,6 +805,11 @@ Lenguaje hablado, como si le explicaras a un amigo.</pre>
 
     <span class="entregable">📦 Entregable · 04-imagenes — biblioteca visual de marca</span>
 
+    <label class="modcheck" data-mod="4">
+      <input type="checkbox" data-mod="4" aria-label="Completé el módulo 4">
+      <span>Completé el módulo 4 · Imágenes</span>
+    </label>
+
     <div class="card" style="margin-top:20px;text-align:center;border-style:dashed">
       <p style="color:var(--faint);font-size:.9rem">¿Te sirvió este módulo o viste algo para mejorar? Contanos por Instagram —<br>
       <a href="https://instagram.com/cocogo" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px;fill:currentColor;vertical-align:-2px;margin-right:3px"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 3.68A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84ZM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4Zm6.41-10.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44Z"/></svg>@cocogo →</a></p>
@@ -857,6 +894,11 @@ Español latinoamericano. Listas para enviar hoy — si falta un dato mío, ped�
     </div>
 
     <span class="entregable">📦 Entregable · 05-mensajes-venta — 5 plantillas + registro</span>
+
+    <label class="modcheck" data-mod="5">
+      <input type="checkbox" data-mod="5" aria-label="Completé el módulo 5">
+      <span>Completé el módulo 5 · Ventas</span>
+    </label>
 
     <div class="card" style="margin-top:20px;text-align:center;border-style:dashed">
       <p style="color:var(--faint);font-size:.9rem">¿Te sirvió este módulo o viste algo para mejorar? Contanos por Instagram —<br>
@@ -951,6 +993,11 @@ Acá va la entrada:
 
     <span class="entregable">📦 Entregable · 06-flujos — 3 atajos operativos probados</span>
 
+    <label class="modcheck" data-mod="6">
+      <input type="checkbox" data-mod="6" aria-label="Completé el módulo 6">
+      <span>Completé el módulo 6 · Flujos</span>
+    </label>
+
     <div class="card" style="margin-top:20px;text-align:center;border-style:dashed">
       <p style="color:var(--faint);font-size:.9rem">¿Te sirvió este módulo o viste algo para mejorar? Contanos por Instagram —<br>
       <a href="https://instagram.com/cocogo" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px;fill:currentColor;vertical-align:-2px;margin-right:3px"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 3.68A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84ZM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4Zm6.41-10.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44Z"/></svg>@cocogo →</a></p>
@@ -1037,6 +1084,11 @@ Que sean conversacionales, no una encuesta formal. Máx. 2 líneas cada pregunta
     </div>
 
     <span class="entregable">📦 Entregable · 07-ficha-idea — decisión con datos, no con corazonada</span>
+
+    <label class="modcheck" data-mod="7">
+      <input type="checkbox" data-mod="7" aria-label="Completé el módulo 7">
+      <span>Completé el módulo 7 · Investigación</span>
+    </label>
 
     <div class="card" style="margin-top:20px;text-align:center;border-style:dashed">
       <p style="color:var(--faint);font-size:.9rem">¿Te sirvió este módulo o viste algo para mejorar? Contanos por Instagram —<br>
@@ -1165,6 +1217,11 @@ Máx. 5 líneas por acción. Directo.</pre>
     </div>
 
     <span class="entregable">📦 Entregable · 08-manual-operacion — tu kit completo</span>
+
+    <label class="modcheck" data-mod="8">
+      <input type="checkbox" data-mod="8" aria-label="Completé el módulo 8">
+      <span>Completé el módulo 8 · Sistema</span>
+    </label>
 
     <div class="card" style="margin-top:20px;text-align:center;border-style:dashed">
       <p style="color:var(--faint);font-size:.9rem">¿Te sirvió este módulo o viste algo para mejorar? Contanos por Instagram —<br>
@@ -1513,6 +1570,41 @@ function fallback(text,cb){
   try{document.execCommand('copy');cb();}catch(e){}
   document.body.removeChild(ta);
 }
+
+/* B6 — progreso de módulos (localStorage) */
+(function(){
+  var KEY='cocogo_progreso', TOTAL=8;
+  function load(){try{var v=JSON.parse(localStorage.getItem(KEY));return Array.isArray(v)?v.filter(function(n){return n>=1&&n<=TOTAL;}):[];}catch(e){return [];}}
+  function save(a){try{localStorage.setItem(KEY,JSON.stringify(a));}catch(e){}}
+  var done=load();
+  var inputs=document.querySelectorAll('.modcheck input[data-mod]');
+  if(!inputs.length) return;
+  var checks=document.querySelectorAll('#p-verif .check-list .check');
+  var fill=document.querySelector('.progfill');
+  var label=document.querySelector('.proglabel');
+  var pwrap=document.querySelector('.progwrap');
+  function render(){
+    inputs.forEach(function(inp){
+      var n=+inp.getAttribute('data-mod'), on=done.indexOf(n)>-1;
+      inp.checked=on;
+      inp.closest('.modcheck').classList.toggle('done',on);
+    });
+    checks.forEach(function(c,i){c.classList.toggle('done',done.indexOf(i+1)>-1);});
+    var pct=Math.round(done.length/TOTAL*100);
+    if(fill)fill.style.width=pct+'%';
+    if(label)label.textContent=done.length+'/'+TOTAL;
+    if(pwrap)pwrap.classList.toggle('complete',done.length>=TOTAL);
+  }
+  inputs.forEach(function(inp){
+    inp.addEventListener('change',function(){
+      var n=+inp.getAttribute('data-mod'), i=done.indexOf(n);
+      if(inp.checked&&i<0)done.push(n);
+      else if(!inp.checked&&i>-1)done.splice(i,1);
+      save(done);render();
+    });
+  });
+  render();
+})();
 </script>
 </body>
 </html>
